@@ -122,7 +122,7 @@ export default function Members() {
             <div className="px-10">
                 {loading ? (
                     <div className="flex flex-col items-center py-20">
-                        <div className="w-10 h-10 border-4 border-[#22C55E]/20 border-t-[#22C55E] rounded-full animate-spin mb-4"></div>
+                        <div className="w-10 h-10 border-4 border-[#0b87bd]/20 border-t-[#0b87bd] rounded-full animate-spin mb-4"></div>
                         <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading...</p>
                     </div>
                 ) : myClubs.length === 0 ? (
@@ -134,13 +134,13 @@ export default function Members() {
                         </div>
                         <h3 className="text-lg font-black text-[#1E1E2D] mb-2">No Clubs Found</h3>
                         <p className="text-gray-500 text-sm mb-6">You must lead at least one club to manage members.</p>
-                        <button onClick={() => router.push('/dashboard/lead/create-club')} className="px-6 py-3 bg-[#22C55E] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#16A34A] shadow-lg shadow-[#22C55E]/20">Create Your Club</button>
+                        <button onClick={() => router.push('/dashboard/lead/create-club')} className="px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#096a96] shadow-lg shadow-[#0b87bd]/20">Create Your Club</button>
                     </div>
                 ) : (
                     <div className="space-y-6">
                         <div className="flex items-center justify-between">
                             <select
-                                className="bg-white border-2 border-gray-100 rounded-2xl px-6 py-3 text-gray-900 font-bold outline-none shadow-sm appearance-none hover:border-[#22C55E]/20 transition-all"
+                                className="bg-white border-2 border-gray-100 rounded-2xl px-6 py-3 text-gray-900 font-bold outline-none shadow-sm appearance-none hover:border-[#0b87bd]/20 transition-all"
                                 value={selectedClubId}
                                 onChange={(e) => setSelectedClubId(e.target.value)}
                             >
@@ -151,7 +151,7 @@ export default function Members() {
 
                             <button
                                 onClick={() => router.push('/dashboard/lead/add-member')}
-                                className="px-6 py-3 bg-[#22C55E] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#22C55E]/20 hover:bg-[#16A34A] transition-all flex items-center gap-2"
+                                className="px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#0b87bd]/20 hover:bg-[#096a96] transition-all flex items-center gap-2"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -166,7 +166,7 @@ export default function Members() {
                                     <p className="text-gray-400 font-black uppercase tracking-widest text-xs">No members yet</p>
                                     <button
                                         onClick={() => router.push('/dashboard/lead/add-member')}
-                                        className="mt-4 text-[#22C55E] font-bold text-sm hover:underline"
+                                        className="mt-4 text-[#0b87bd] font-bold text-sm hover:underline"
                                     >
                                         Add your first member
                                     </button>
@@ -174,7 +174,7 @@ export default function Members() {
                             ) : (
                                 <div className="overflow-x-auto">
                                     <table className="w-full">
-                                        <thead className="bg-[#F8F9FB] border-b border-gray-100">
+                                        <thead className="bg-[#f5f7f9] border-b border-gray-100">
                                             <tr>
                                                 <th className="px-8 py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Member</th>
                                                 <th className="px-8 py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Email</th>
@@ -184,14 +184,14 @@ export default function Members() {
                                         </thead>
                                         <tbody className="divide-y divide-gray-50">
                                             {members.map((member) => (
-                                                <tr key={member.user_id} className="hover:bg-[#F8F9FB]/50 transition-colors">
+                                                <tr key={member.user_id} className="hover:bg-[#f5f7f9]/50 transition-colors">
                                                     <td className="px-8 py-5">
                                                         <div className="flex items-center gap-3">
-                                                            <div className="w-10 h-10 rounded-full bg-[#22C55E]/10 flex items-center justify-center overflow-hidden">
+                                                            <div className="w-10 h-10 rounded-full bg-[#0b87bd]/10 flex items-center justify-center overflow-hidden">
                                                                 {member.profiles?.avatar_url ? (
                                                                     <img src={member.profiles.avatar_url} alt="" className="w-full h-full object-cover" />
                                                                 ) : (
-                                                                    <span className="text-[#22C55E] font-black text-sm">
+                                                                    <span className="text-[#0b87bd] font-black text-sm">
                                                                         {member.profiles?.full_name?.[0]?.toUpperCase() || 'U'}
                                                                     </span>
                                                                 )}
@@ -206,7 +206,7 @@ export default function Members() {
                                                         <select
                                                             value={member.role}
                                                             onChange={(e) => handleRoleChange(member.user_id, e.target.value)}
-                                                            className="bg-transparent border border-gray-200 rounded-lg px-3 py-1.5 text-xs font-bold text-gray-700 outline-none hover:border-[#22C55E]/30 transition-all"
+                                                            className="bg-transparent border border-gray-200 rounded-lg px-3 py-1.5 text-xs font-bold text-gray-700 outline-none hover:border-[#0b87bd]/30 transition-all"
                                                         >
                                                             <option value="member">Member</option>
                                                             <option value="lead">Lead</option>

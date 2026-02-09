@@ -76,7 +76,7 @@ export default function AllClubs() {
                             key={status}
                             onClick={() => setFilter(status)}
                             className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${filter === status
-                                    ? 'bg-[#22C55E] text-white shadow-lg shadow-[#22C55E]/20'
+                                    ? 'bg-[#0b87bd] text-white shadow-lg shadow-[#0b87bd]/20'
                                     : 'bg-white text-gray-500 hover:bg-gray-50 border border-gray-100'
                                 }`}
                         >
@@ -87,7 +87,7 @@ export default function AllClubs() {
 
                 {loading ? (
                     <div className="flex flex-col items-center py-20">
-                        <div className="w-10 h-10 border-4 border-[#22C55E]/20 border-t-[#22C55E] rounded-full animate-spin mb-4"></div>
+                        <div className="w-10 h-10 border-4 border-[#0b87bd]/20 border-t-[#0b87bd] rounded-full animate-spin mb-4"></div>
                         <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading Clubs...</p>
                     </div>
                 ) : clubs.length === 0 ? (
@@ -113,7 +113,7 @@ export default function AllClubs() {
                                 className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl transition-all group cursor-pointer"
                             >
                                 {/* Cover Image */}
-                                <div className="h-40 bg-gradient-to-br from-[#22C55E]/10 to-[#16A34A]/5 relative overflow-hidden">
+                                <div className="h-40 bg-gradient-to-br from-[#0b87bd]/10 to-[#096a96]/5 relative overflow-hidden">
                                     {club.cover_image ? (
                                         <img
                                             src={club.cover_image}
@@ -122,7 +122,7 @@ export default function AllClubs() {
                                         />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center">
-                                            <svg className="w-16 h-16 text-[#22C55E]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg className="w-16 h-16 text-[#0b87bd]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                             </svg>
                                         </div>
@@ -131,7 +131,7 @@ export default function AllClubs() {
                                     {/* Status Badge */}
                                     <div className="absolute top-4 right-4">
                                         <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border backdrop-blur-sm ${club.is_approved
-                                                ? 'bg-[#22C55E]/90 text-white border-white/20'
+                                                ? 'bg-[#0b87bd]/90 text-white border-white/20'
                                                 : 'bg-orange-500/90 text-white border-white/20'
                                             }`}>
                                             {club.is_approved ? 'Verified' : 'Pending'}
@@ -154,7 +154,7 @@ export default function AllClubs() {
 
                                 {/* Content */}
                                 <div className="p-6 pt-8">
-                                    <h3 className="text-xl font-black text-[#1E1E2D] mb-2 group-hover:text-[#22C55E] transition-colors line-clamp-1">
+                                    <h3 className="text-xl font-black text-[#1E1E2D] mb-2 group-hover:text-[#0b87bd] transition-colors line-clamp-1">
                                         {club.name}
                                     </h3>
 
@@ -169,7 +169,7 @@ export default function AllClubs() {
                                                 {club.leads.slice(0, 3).map((lead, idx) => (
                                                     <div
                                                         key={idx}
-                                                        className="w-8 h-8 rounded-full border-2 border-white bg-[#22C55E]/10 overflow-hidden"
+                                                        className="w-8 h-8 rounded-full border-2 border-white bg-[#0b87bd]/10 overflow-hidden"
                                                     >
                                                         {lead?.avatar_url ? (
                                                             <img
@@ -178,7 +178,7 @@ export default function AllClubs() {
                                                                 className="w-full h-full object-cover"
                                                             />
                                                         ) : (
-                                                            <div className="w-full h-full flex items-center justify-center text-[#22C55E] text-xs font-black">
+                                                            <div className="w-full h-full flex items-center justify-center text-[#0b87bd] text-xs font-black">
                                                                 {lead?.full_name?.[0]?.toUpperCase() || 'L'}
                                                             </div>
                                                         )}

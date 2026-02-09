@@ -82,11 +82,11 @@ export default function Sidebar({ user, profile }) {
     const items = menuItems[currentRole] || menuItems.student
 
     return (
-        <aside className="w-72 bg-[#22C55E] h-screen fixed left-0 top-0 text-white flex flex-col p-8 transition-all duration-300 z-50">
+        <aside className="w-72 bg-[#0b87bd] h-screen fixed left-0 top-0 text-white flex flex-col p-8 transition-all duration-300 z-50">
             {/* Logo */}
             <div className="flex items-center gap-3 mb-12">
                 <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-lg shadow-black/5">
-                    <div className="w-5 h-5 bg-[#22C55E] rounded-sm transform rotate-45"></div>
+                    <div className="w-5 h-5 bg-[#0b87bd] rounded-sm transform rotate-45"></div>
                 </div>
                 <span className="text-xl font-black tracking-tighter text-white">Campus Connect</span>
             </div>
@@ -109,9 +109,9 @@ export default function Sidebar({ user, profile }) {
                                 </div>
                             )}
                         </div>
-                        <label className="absolute bottom-0 right-0 w-8 h-8 bg-white rounded-full flex items-center justify-center border-4 border-[#22C55E] cursor-pointer hover:scale-110 transition-transform shadow-lg">
+                        <label className="absolute bottom-0 right-0 w-8 h-8 bg-white rounded-full flex items-center justify-center border-4 border-[#0b87bd] cursor-pointer hover:scale-110 transition-transform shadow-lg">
                             <input type="file" className="hidden" accept="image/*" onChange={handleAvatarChange} disabled={isUpdatingAvatar} />
-                            <svg className="w-4 h-4 text-[#22C55E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 text-[#0b87bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
@@ -136,13 +136,13 @@ export default function Sidebar({ user, profile }) {
                             key={item.name}
                             href={item.path}
                             className={`flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-200 group relative ${isActive
-                                ? 'bg-white text-[#22C55E] shadow-xl'
+                                ? 'bg-white text-[#0b87bd] shadow-xl'
                                 : 'text-white/70 hover:text-white hover:bg-white/10'
                                 }`}
                         >
                             {isActive && <div className="absolute left-0 w-1 h-6 bg-white rounded-r-full"></div>}
                             <svg
-                                className={`w-5 h-5 transition-colors ${isActive ? 'text-[#22C55E]' : 'text-white/60 group-hover:text-white'}`}
+                                className={`w-5 h-5 transition-colors ${isActive ? 'text-[#0b87bd]' : 'text-white/60 group-hover:text-white'}`}
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"

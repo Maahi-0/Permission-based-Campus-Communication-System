@@ -15,7 +15,7 @@ export default async function PlaceholderPage({ title, subtitle }) {
 
             <div className="px-10">
                 <div className="bg-white rounded-[2rem] p-20 text-center border shadow-sm border-gray-100 min-h-[400px] flex flex-col items-center justify-center">
-                    <div className="w-24 h-24 bg-[#F8F7F3] rounded-3xl flex items-center justify-center text-[#22C55E] mb-8 animate-pulse text-4xl">
+                    <div className="w-24 h-24 bg-[#f5f7f9] rounded-3xl flex items-center justify-center text-[#0b87bd] mb-8 animate-pulse text-4xl">
                         🚀
                     </div>
                     <h2 className="text-3xl font-black mb-4 tracking-tight">Accessing Intelligence...</h2>

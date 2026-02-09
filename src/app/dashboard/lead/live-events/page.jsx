@@ -106,7 +106,7 @@ export default function LiveEvents() {
 
     const getStatusColor = (status) => {
         switch (status) {
-            case 'published': return 'bg-[#22C55E]/10 text-[#22C55E] border-[#22C55E]/20'
+            case 'published': return 'bg-[#0b87bd]/10 text-[#0b87bd] border-[#0b87bd]/20'
             case 'draft': return 'bg-gray-100 text-gray-600 border-gray-200'
             case 'cancelled': return 'bg-red-50 text-red-600 border-red-100'
             default: return 'bg-gray-100 text-gray-600 border-gray-200'
@@ -128,7 +128,7 @@ export default function LiveEvents() {
                                 key={status}
                                 onClick={() => setFilter(status)}
                                 className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${filter === status
-                                        ? 'bg-[#22C55E] text-white shadow-lg shadow-[#22C55E]/20'
+                                        ? 'bg-[#0b87bd] text-white shadow-lg shadow-[#0b87bd]/20'
                                         : 'bg-white text-gray-500 hover:bg-gray-50 border border-gray-100'
                                     }`}
                             >
@@ -150,7 +150,7 @@ export default function LiveEvents() {
 
                 {loading ? (
                     <div className="flex flex-col items-center py-20">
-                        <div className="w-10 h-10 border-4 border-[#22C55E]/20 border-t-[#22C55E] rounded-full animate-spin mb-4"></div>
+                        <div className="w-10 h-10 border-4 border-[#0b87bd]/20 border-t-[#0b87bd] rounded-full animate-spin mb-4"></div>
                         <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading Events...</p>
                     </div>
                 ) : events.length === 0 ? (
@@ -168,7 +168,7 @@ export default function LiveEvents() {
                         </p>
                         <Link
                             href="/dashboard/lead/create-event"
-                            className="inline-block px-6 py-3 bg-[#22C55E] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#16A34A] shadow-lg shadow-[#22C55E]/20"
+                            className="inline-block px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#096a96] shadow-lg shadow-[#0b87bd]/20"
                         >
                             Create Your First Event
                         </Link>
@@ -184,7 +184,7 @@ export default function LiveEvents() {
                                     <div className="flex items-center gap-1">
                                         <button
                                             onClick={() => handleStatusChange(event.id, event.status === 'published' ? 'draft' : 'published')}
-                                            className="w-8 h-8 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#22C55E] transition-colors"
+                                            className="w-8 h-8 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400 hover:text-[#0b87bd] transition-colors"
                                             title={event.status === 'published' ? 'Unpublish' : 'Publish'}
                                         >
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -204,7 +204,7 @@ export default function LiveEvents() {
                                     </div>
                                 </div>
 
-                                <h3 className="text-lg font-black text-[#1E1E2D] mb-2 line-clamp-2 group-hover:text-[#22C55E] transition-colors">
+                                <h3 className="text-lg font-black text-[#1E1E2D] mb-2 line-clamp-2 group-hover:text-[#0b87bd] transition-colors">
                                     {event.title}
                                 </h3>
 

@@ -68,8 +68,8 @@ export default function CreateClub() {
                 <div className="max-w-3xl bg-white rounded-[2.5rem] p-12 shadow-xl border border-gray-100">
                     {success ? (
                         <div className="text-center py-12">
-                            <div className="w-20 h-20 bg-[#22C55E]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <svg className="w-10 h-10 text-[#22C55E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="w-20 h-20 bg-[#0b87bd]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg className="w-10 h-10 text-[#0b87bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
@@ -84,7 +84,7 @@ export default function CreateClub() {
                                     <input
                                         type="text"
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
                                         placeholder="e.g. Robotics & AI Club"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
@@ -96,7 +96,7 @@ export default function CreateClub() {
                                     <textarea
                                         rows="6"
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-3xl px-6 py-5 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-medium outline-none placeholder:text-gray-300 shadow-sm"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-3xl px-6 py-5 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-medium outline-none placeholder:text-gray-300 shadow-sm"
                                         placeholder="Explain the club's mission, objective, and planned activities for the student body..."
                                         value={description}
                                         onChange={(e) => setDescription(e.target.value)}

@@ -38,7 +38,7 @@ export default async function LeadDashboard() {
     const stats = [
         { name: 'Club Members', value: totalMembers || 0, change: 'total', color: 'from-[#3B82F6] to-[#2563EB]', icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z' },
         { name: 'My Events', value: totalEvents || 0, change: 'across clubs', color: 'from-[#EC4899] to-[#DB2777]', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
-        { name: 'Managed Clubs', value: clubs.length, change: 'verified', color: 'from-[#22C55E] to-[#16A34A]', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+        { name: 'Managed Clubs', value: clubs.length, change: 'verified', color: 'from-[#0b87bd] to-[#096a96]', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
     ]
 
     return (
@@ -74,28 +74,28 @@ export default async function LeadDashboard() {
                     <div className="lg:col-span-2 space-y-8">
                         <div className="flex items-center justify-between">
                             <h2 className="text-xl font-black tracking-tight text-[#1E1E2D]">My Managed Clubs</h2>
-                            <Link href="/dashboard/lead/create-club" className="px-6 py-2.5 bg-[#22C55E] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#22C55E]/20 hover:bg-[#16A34A] transition-all">Register New Club</Link>
+                            <Link href="/dashboard/lead/create-club" className="px-6 py-2.5 bg-[#0b87bd] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#0b87bd]/20 hover:bg-[#096a96] transition-all">Register New Club</Link>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {clubs.length > 0 ? clubs.map(club => (
                                 <div key={club.id} className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
                                     <div className="flex justify-between items-start mb-6">
-                                        <div className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${club.is_approved ? 'bg-[#22C55E]/10 text-[#22C55E]' : 'bg-orange-500/10 text-orange-500'}`}>
+                                        <div className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${club.is_approved ? 'bg-[#0b87bd]/10 text-[#0b87bd]' : 'bg-orange-500/10 text-orange-500'}`}>
                                             {club.is_approved ? 'Verified' : 'Pending Verification'}
                                         </div>
                                     </div>
-                                    <h3 className="text-xl font-black text-[#1E1E2D] group-hover:text-[#22C55E] transition-colors mb-2 leading-tight">{club.name}</h3>
+                                    <h3 className="text-xl font-black text-[#1E1E2D] group-hover:text-[#0b87bd] transition-colors mb-2 leading-tight">{club.name}</h3>
                                     <p className="text-gray-500 text-sm font-medium line-clamp-2 mb-8">{club.description}</p>
                                     <div className="flex items-center gap-2 pt-6 border-t border-gray-50">
-                                        <Link href={`/dashboard/lead/members?club=${club.id}`} className="flex-1 text-center py-3 bg-[#F8F7F3] rounded-xl text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-[#1E1E2D] transition-colors">Members</Link>
+                                        <Link href={`/dashboard/lead/members?club=${club.id}`} className="flex-1 text-center py-3 bg-[#f5f7f9] rounded-xl text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-[#1E1E2D] transition-colors">Members</Link>
                                         <Link href={`/dashboard/lead/create-event?club=${club.id}`} className="flex-1 text-center py-3 bg-[#1E1E2D] rounded-xl text-[10px] font-black uppercase tracking-widest text-white hover:bg-black transition-colors">Add Event</Link>
                                     </div>
                                 </div>
                             )) : (
                                 <div className="col-span-2 bg-white rounded-[2rem] p-16 text-center border-2 border-dashed border-gray-100">
                                     <p className="text-gray-400 font-black uppercase tracking-widest text-xs mb-4">No clubs under your leadership</p>
-                                    <Link href="/dashboard/lead/create-club" className="text-[#22C55E] font-black uppercase tracking-widest text-[10px] hover:underline">Apply for club lead</Link>
+                                    <Link href="/dashboard/lead/create-club" className="text-[#0b87bd] font-black uppercase tracking-widest text-[10px] hover:underline">Apply for club lead</Link>
                                 </div>
                             )}
                         </div>
@@ -110,8 +110,8 @@ export default async function LeadDashboard() {
                                     { name: 'View Live Events', path: '/dashboard/lead/live-events', icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z' },
                                     { name: 'Browse All Clubs', path: '/dashboard/lead/all-clubs', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' },
                                 ].map(action => (
-                                    <Link key={action.name} href={action.path} className="flex items-center gap-4 p-4 hover:bg-[#F8F7F3] rounded-2xl transition-all group">
-                                        <div className="w-10 h-10 bg-gray-50 group-hover:bg-white rounded-xl flex items-center justify-center text-gray-400 group-hover:text-[#22C55E] transition-all">
+                                    <Link key={action.name} href={action.path} className="flex items-center gap-4 p-4 hover:bg-[#f5f7f9] rounded-2xl transition-all group">
+                                        <div className="w-10 h-10 bg-gray-50 group-hover:bg-white rounded-xl flex items-center justify-center text-gray-400 group-hover:text-[#0b87bd] transition-all">
                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={action.icon} />
                                             </svg>

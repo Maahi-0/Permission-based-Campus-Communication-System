@@ -111,11 +111,11 @@ export default function AddMember() {
                 <div className="max-w-2xl bg-white rounded-[2.5rem] p-12 shadow-xl border border-gray-100">
                     {fetchingClubs ? (
                         <div className="flex flex-col items-center py-20">
-                            <div className="w-10 h-10 border-4 border-[#22C55E]/20 border-t-[#22C55E] rounded-full animate-spin mb-4"></div>
+                            <div className="w-10 h-10 border-4 border-[#0b87bd]/20 border-t-[#0b87bd] rounded-full animate-spin mb-4"></div>
                             <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading Your Clubs...</p>
                         </div>
                     ) : myClubs.length === 0 ? (
-                        <div className="text-center py-12 bg-[#F8F9FB] rounded-[2rem] border-2 border-dashed border-gray-200">
+                        <div className="text-center py-12 bg-[#f5f7f9] rounded-[2rem] border-2 border-dashed border-gray-200">
                             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -123,7 +123,7 @@ export default function AddMember() {
                             </div>
                             <h3 className="text-lg font-black text-[#1E1E2D] mb-2">No Clubs Found</h3>
                             <p className="text-gray-500 text-sm mb-6">You must lead at least one club to add members.</p>
-                            <button onClick={() => router.push('/dashboard/lead/create-club')} className="px-6 py-3 bg-[#22C55E] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#16A34A] shadow-lg shadow-[#22C55E]/20">Create Your Club</button>
+                            <button onClick={() => router.push('/dashboard/lead/create-club')} className="px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#096a96] shadow-lg shadow-[#0b87bd]/20">Create Your Club</button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-8">
@@ -132,7 +132,7 @@ export default function AddMember() {
                                     <label className="text-xs font-black text-gray-400 uppercase tracking-widest pl-1">Select Club</label>
                                     <select
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none shadow-sm appearance-none"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none shadow-sm appearance-none"
                                         value={selectedClubId}
                                         onChange={(e) => setSelectedClubId(e.target.value)}
                                     >
@@ -149,7 +149,7 @@ export default function AddMember() {
                                     <input
                                         type="email"
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
                                         placeholder="student@university.edu"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -160,7 +160,7 @@ export default function AddMember() {
                                 <div className="space-y-2">
                                     <label className="text-xs font-black text-gray-400 uppercase tracking-widest pl-1">Member Role</label>
                                     <select
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none shadow-sm appearance-none"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none shadow-sm appearance-none"
                                         value={role}
                                         onChange={(e) => setRole(e.target.value)}
                                     >
@@ -180,7 +180,7 @@ export default function AddMember() {
                             )}
 
                             {success && (
-                                <div className="bg-[#22C55E]/10 text-[#22C55E] px-6 py-4 rounded-2xl text-xs font-bold border border-[#22C55E]/20 flex items-center gap-3">
+                                <div className="bg-[#0b87bd]/10 text-[#0b87bd] px-6 py-4 rounded-2xl text-xs font-bold border border-[#0b87bd]/20 flex items-center gap-3">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
@@ -192,7 +192,7 @@ export default function AddMember() {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="w-full bg-[#22C55E] hover:bg-[#16A34A] text-white font-black py-5 rounded-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 shadow-xl shadow-[#22C55E]/20 flex items-center justify-center gap-3"
+                                    className="w-full bg-[#0b87bd] hover:bg-[#096a96] text-white font-black py-5 rounded-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 shadow-xl shadow-[#0b87bd]/20 flex items-center justify-center gap-3"
                                 >
                                     {loading ? (
                                         <>

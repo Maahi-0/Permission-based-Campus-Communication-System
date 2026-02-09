@@ -105,8 +105,8 @@ export default function CreateEvent() {
                 <div className="max-w-4xl bg-white rounded-[2.5rem] p-12 shadow-xl border border-gray-100">
                     {success ? (
                         <div className="text-center py-12">
-                            <div className="w-20 h-20 bg-[#22C55E]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <svg className="w-10 h-10 text-[#22C55E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="w-20 h-20 bg-[#0b87bd]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <svg className="w-10 h-10 text-[#0b87bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
@@ -115,11 +115,11 @@ export default function CreateEvent() {
                         </div>
                     ) : fetchingClubs ? (
                         <div className="flex flex-col items-center py-20">
-                            <div className="w-10 h-10 border-4 border-[#22C55E]/20 border-t-[#22C55E] rounded-full animate-spin mb-4"></div>
+                            <div className="w-10 h-10 border-4 border-[#0b87bd]/20 border-t-[#0b87bd] rounded-full animate-spin mb-4"></div>
                             <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Identifying Authorized Clubs...</p>
                         </div>
                     ) : myClubs.length === 0 ? (
-                        <div className="text-center py-12 bg-[#F8F9FB] rounded-[2rem] border-2 border-dashed border-gray-200">
+                        <div className="text-center py-12 bg-[#f5f7f9] rounded-[2rem] border-2 border-dashed border-gray-200">
                             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -127,7 +127,7 @@ export default function CreateEvent() {
                             </div>
                             <h3 className="text-lg font-black text-[#1E1E2D] mb-2">No Verified Clubs Found</h3>
                             <p className="text-gray-500 text-sm mb-6">You must lead at least one verified club to create events.</p>
-                            <button onClick={() => router.push('/dashboard/lead/create-club')} className="px-6 py-3 bg-[#22C55E] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#16A34A] shadow-lg shadow-[#22C55E]/20">Apply for Club Lead</button>
+                            <button onClick={() => router.push('/dashboard/lead/create-club')} className="px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-[#096a96] shadow-lg shadow-[#0b87bd]/20">Apply for Club Lead</button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-8">
@@ -136,7 +136,7 @@ export default function CreateEvent() {
                                     <label className="text-xs font-black text-gray-400 uppercase tracking-widest pl-1">Hosting Organization</label>
                                     <select
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none shadow-sm appearance-none"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none shadow-sm appearance-none"
                                         value={selectedClubId}
                                         onChange={(e) => setSelectedClubId(e.target.value)}
                                     >
@@ -151,7 +151,7 @@ export default function CreateEvent() {
                                     <input
                                         type="text"
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
                                         placeholder="e.g. Workshop on Smart Contracts"
                                         value={formData.title}
                                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
@@ -163,7 +163,7 @@ export default function CreateEvent() {
                                     <input
                                         type="datetime-local"
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none shadow-sm"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none shadow-sm"
                                         value={formData.event_date}
                                         onChange={(e) => setFormData({ ...formData, event_date: e.target.value })}
                                     />
@@ -174,7 +174,7 @@ export default function CreateEvent() {
                                     <input
                                         type="text"
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-bold outline-none placeholder:text-gray-300 shadow-sm"
                                         placeholder="e.g. Block C, Room 402"
                                         value={formData.location}
                                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
@@ -186,7 +186,7 @@ export default function CreateEvent() {
                                     <textarea
                                         rows="5"
                                         required
-                                        className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-3xl px-6 py-5 text-gray-900 focus:bg-white focus:border-[#22C55E]/20 transition-all font-medium outline-none placeholder:text-gray-300 shadow-sm"
+                                        className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-3xl px-6 py-5 text-gray-900 focus:bg-white focus:border-[#0b87bd]/20 transition-all font-medium outline-none placeholder:text-gray-300 shadow-sm"
                                         placeholder="What is this event about? Mention requirements, highlights, and agenda..."
                                         value={formData.description}
                                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -204,7 +204,7 @@ export default function CreateEvent() {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="w-full bg-[#22C55E] hover:bg-[#16A34A] text-white font-black py-5 rounded-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 shadow-xl shadow-[#22C55E]/20 flex items-center justify-center gap-3"
+                                    className="w-full bg-[#0b87bd] hover:bg-[#096a96] text-white font-black py-5 rounded-2xl transition-all transform active:scale-[0.98] disabled:opacity-50 shadow-xl shadow-[#0b87bd]/20 flex items-center justify-center gap-3"
                                 >
                                     {loading ? (
                                         <div className="w-6 h-6 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>

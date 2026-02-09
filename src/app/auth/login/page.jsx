@@ -54,12 +54,12 @@ export default function Login() {
     return (
         <div className="min-h-screen flex bg-white font-sans overflow-hidden">
             {/* Left Side: Visual/Branding (Out of the box) */}
-            <div className="hidden lg:flex lg:w-1/2 bg-[#22C55E] relative items-center justify-center p-20 overflow-hidden">
+            <div className="hidden lg:flex lg:w-1/2 bg-[#0b87bd] relative items-center justify-center p-20 overflow-hidden">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-3xl"></div>
 
                 <div className="relative z-10 text-white max-w-lg">
-                    <Link href="/" className="inline-block text-2xl font-bold bg-white text-[#22C55E] px-6 py-2 rounded-2xl mb-12 shadow-xl shadow-[#16A34A]/20">
+                    <Link href="/" className="inline-block text-2xl font-bold bg-white text-[#0b87bd] px-6 py-2 rounded-2xl mb-12 shadow-xl shadow-[#096a96]/20">
                         Campus Connect
                     </Link>
                     <h2 className="text-6xl font-extrabold mb-8 tracking-tighter leading-[1.1]">
@@ -72,7 +72,7 @@ export default function Login() {
                     <div className="mt-16 flex items-center gap-4">
                         <div className="flex -space-x-3">
                             {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-10 h-10 rounded-full border-2 border-[#22C55E] bg-gray-200 overflow-hidden">
+                                <div key={i} className="w-10 h-10 rounded-full border-2 border-[#0b87bd] bg-gray-200 overflow-hidden">
                                     <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="user" />
                                 </div>
                             ))}
@@ -86,7 +86,7 @@ export default function Login() {
             <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 sm:px-16 lg:px-24 py-12 relative">
                 {/* Mobile Tablet Logo */}
                 <div className="lg:hidden mb-12 flex justify-center">
-                    <Link href="/" className="text-3xl font-bold text-[#22C55E]">Campus Connect</Link>
+                    <Link href="/" className="text-3xl font-bold text-[#0b87bd]">Campus Connect</Link>
                 </div>
 
                 <div className="max-w-md w-full mx-auto">
@@ -96,7 +96,7 @@ export default function Login() {
                     </div>
 
                     {message && (
-                        <div className="mb-8 bg-[#22C55E]/10 border border-[#22C55E]/20 text-[#22C55E] px-6 py-4 rounded-2xl text-sm font-bold text-center">
+                        <div className="mb-8 bg-[#0b87bd]/10 border border-[#0b87bd]/20 text-[#0b87bd] px-6 py-4 rounded-2xl text-sm font-bold text-center">
                             {message}
                         </div>
                     )}
@@ -105,7 +105,7 @@ export default function Login() {
                         <div className="space-y-1">
                             <label className="text-xs font-bold text-gray-400 uppercase tracking-widest pl-1">Email</label>
                             <div className="relative group">
-                                <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#22C55E] transition-colors">
+                                <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#0b87bd] transition-colors">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
@@ -113,7 +113,7 @@ export default function Login() {
                                 <input
                                     type="email"
                                     required
-                                    className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-[1.25rem] pl-14 pr-6 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E] transition-all font-semibold outline-none placeholder:text-gray-400"
+                                    className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-[1.25rem] pl-14 pr-6 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none placeholder:text-gray-400"
                                     placeholder="Enter your email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -124,10 +124,10 @@ export default function Login() {
                         <div className="space-y-1">
                             <div className="flex justify-between items-center px-1">
                                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest">Password</label>
-                                <button type="button" className="text-xs font-bold text-[#22C55E] hover:underline">Forgot?</button>
+                                <button type="button" className="text-xs font-bold text-[#0b87bd] hover:underline">Forgot?</button>
                             </div>
                             <div className="relative group">
-                                <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#22C55E] transition-colors">
+                                <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#0b87bd] transition-colors">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                     </svg>
@@ -135,7 +135,7 @@ export default function Login() {
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     required
-                                    className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-[1.25rem] pl-14 pr-14 py-4 text-gray-900 focus:bg-white focus:border-[#22C55E] transition-all font-semibold outline-none placeholder:text-gray-400"
+                                    className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-[1.25rem] pl-14 pr-14 py-4 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none placeholder:text-gray-400"
                                     placeholder="••••••••"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
@@ -168,7 +168,7 @@ export default function Login() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-[#22C55E] hover:bg-[#16A34A] text-white font-black py-4 rounded-[1.25rem] transition-all transform hover:shadow-xl hover:shadow-[#22C55E]/20 active:scale-[0.98] disabled:opacity-70 text-lg shadow-lg shadow-[#22C55E]/10"
+                            className="w-full bg-[#0b87bd] hover:bg-[#096a96] text-white font-black py-4 rounded-[1.25rem] transition-all transform hover:shadow-xl hover:shadow-[#0b87bd]/20 active:scale-[0.98] disabled:opacity-70 text-lg shadow-lg shadow-[#0b87bd]/10"
                         >
                             {loading ? "AUTHENTICATING..." : "Sign In"}
                         </button>
@@ -186,7 +186,7 @@ export default function Login() {
                             <button
                                 type="button"
                                 onClick={() => handleSocialLogin('google')}
-                                className="w-full flex justify-center items-center h-16 border-2 border-gray-50 rounded-2xl hover:border-[#22C55E]/30 hover:bg-[#F8F9FB] transition-all group gap-3"
+                                className="w-full flex justify-center items-center h-16 border-2 border-gray-50 rounded-2xl hover:border-[#0b87bd]/30 hover:bg-[#f5f7f9] transition-all group gap-3"
                             >
                                 <svg className="w-6 h-6" viewBox="0 0 24 24">
                                     <path fill="#4285F4" d="M23.745 12.27c0-.79-.069-1.55-.198-2.28H12v4.31h6.586c-.284 1.49-1.127 2.75-2.395 3.6l3.882 3.01c2.27-2.09 3.57-5.17 3.57-8.64z" />
@@ -200,7 +200,7 @@ export default function Login() {
                     </div>
 
                     <p className="mt-12 text-center text-gray-500 font-bold text-sm">
-                        New to Campus? <Link href="/auth/register" className="text-[#22C55E] hover:underline underline-offset-4 decoration-2">Create Account</Link>
+                        New to Campus? <Link href="/auth/register" className="text-[#0b87bd] hover:underline underline-offset-4 decoration-2">Create Account</Link>
                     </p>
                 </div>
             </div>

@@ -58,7 +58,7 @@ export default async function AdminDashboard() {
                     <div className="lg:col-span-2 space-y-8">
                         <div className="flex items-center justify-between">
                             <h2 className="text-xl font-black tracking-tight text-[#1E1E2D]">Pending Verifications</h2>
-                            <Link href="/dashboard/admin/verify-clubs" className="text-xs font-black text-[#22C55E] uppercase tracking-widest hover:underline decoration-2 underline-offset-4">Process Queue</Link>
+                            <Link href="/dashboard/admin/verify-clubs" className="text-xs font-black text-[#0b87bd] uppercase tracking-widest hover:underline decoration-2 underline-offset-4">Process Queue</Link>
                         </div>
 
                         <div className="bg-white rounded-[2rem] border border-gray-100 overflow-hidden shadow-sm">
@@ -75,7 +75,7 @@ export default async function AdminDashboard() {
                                         <tr key={club.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                                             <td className="px-8 py-6">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 rounded-xl bg-[#F8F7F3] flex items-center justify-center text-[#1E1E2D] font-black text-xs">
+                                                    <div className="w-10 h-10 rounded-xl bg-[#f5f7f9] flex items-center justify-center text-[#1E1E2D] font-black text-xs">
                                                         {club.name[0]}
                                                     </div>
                                                     <span className="font-bold text-[#1E1E2D]">{club.name}</span>
@@ -110,13 +110,13 @@ export default async function AdminDashboard() {
                                     <Link href={item.path} key={i} className="flex items-center justify-between group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
                                         <div className="flex items-center gap-4">
                                             <div className={`w-2 h-2 rounded-full ${item.color.replace('text', 'bg')}`}></div>
-                                            <span className="font-black text-[#1E1E2D] text-sm group-hover:text-[#22C55E] transition-colors">{item.name}</span>
+                                            <span className="font-black text-[#1E1E2D] text-sm group-hover:text-[#0b87bd] transition-colors">{item.name}</span>
                                         </div>
                                         <span className="text-sm font-black text-gray-300 group-hover:text-[#1E1E2D] transition-colors">{item.count}</span>
                                     </Link>
                                 ))}
                             </div>
-                            <Link href="/dashboard/admin/members" className="w-full mt-8 py-4 bg-[#F8F7F3] text-[#1E1E2D] rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-gray-200 block text-center transition-all">
+                            <Link href="/dashboard/admin/members" className="w-full mt-8 py-4 bg-[#f5f7f9] text-[#1E1E2D] rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-gray-200 block text-center transition-all">
                                 Manage Campus Registry
                             </Link>
                         </div>

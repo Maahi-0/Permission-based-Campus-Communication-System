@@ -40,7 +40,7 @@ export default async function DashboardLayout({ children }) {
 
     if (!profile) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#F8F9FA] p-6 text-center">
+            <div className="min-h-screen flex items-center justify-center bg-[#e9edf0] p-6 text-center">
                 <div className="max-w-md w-full bg-white rounded-[2.5rem] p-12 border border-gray-100 shadow-xl">
                     <div className="text-6xl mb-6">⚠️</div>
                     <h1 className="text-2xl font-black text-[#1E1E2D] mb-4">Identity Out of Sync</h1>
@@ -50,7 +50,7 @@ export default async function DashboardLayout({ children }) {
                     <div className="space-y-4">
                         <button
                             onClick={() => window.location.reload()}
-                            className="w-full bg-[#22C55E] text-white font-black py-4 rounded-2xl hover:bg-[#16A34A] transition-all"
+                            className="w-full bg-[#0b87bd] text-white font-black py-4 rounded-2xl hover:bg-[#096a96] transition-all"
                         >
                             Retry Sync
                         </button>
@@ -69,15 +69,15 @@ export default async function DashboardLayout({ children }) {
     }
 
     return (
-        <div className="flex min-h-screen bg-[#F8F9FA] font-sans selection:bg-[#22C55E]/30 selection:text-[#1E1E2D]">
+        <div className="flex min-h-screen bg-[#e9edf0] font-sans selection:bg-[#0b87bd]/30 selection:text-[#1E1E2D]">
             {/* Left Sidebar Fixed */}
             <Sidebar user={user} profile={profile} />
 
             {/* Main Content Scrollable */}
             <main className="flex-1 ml-72 min-h-screen relative">
                 {/* Visual Backdrop Details */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#22C55E]/5 to-transparent blur-3xl rounded-full pointer-events-none -mr-48 -mt-48 z-0"></div>
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#22C55E]/5 to-transparent blur-3xl rounded-full pointer-events-none -ml-48 -mb-48 z-0"></div>
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#0b87bd]/5 to-transparent blur-3xl rounded-full pointer-events-none -mr-48 -mt-48 z-0"></div>
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#0b87bd]/5 to-transparent blur-3xl rounded-full pointer-events-none -ml-48 -mb-48 z-0"></div>
 
                 <div className="relative z-10">
                     {children}

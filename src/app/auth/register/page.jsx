@@ -98,12 +98,12 @@ export default function Register() {
     return (
         <div className="min-h-screen flex bg-white font-sans overflow-hidden">
             {/* Left Side: Visual/Branding (Out of the box) */}
-            <div className="hidden lg:flex lg:w-1/2 bg-[#22C55E] relative items-center justify-center p-20 overflow-hidden">
+            <div className="hidden lg:flex lg:w-1/2 bg-[#0b87bd] relative items-center justify-center p-20 overflow-hidden">
                 <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-white/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/10 rounded-full blur-3xl"></div>
 
                 <div className="relative z-10 text-white max-w-lg text-left">
-                    <Link href="/" className="inline-block text-2xl font-bold bg-white text-[#22C55E] px-6 py-2 rounded-2xl mb-12 shadow-xl">
+                    <Link href="/" className="inline-block text-2xl font-bold bg-white text-[#0b87bd] px-6 py-2 rounded-2xl mb-12 shadow-xl">
                         Campus Connect
                     </Link>
                     <h2 className="text-6xl font-extrabold mb-8 tracking-tighter leading-[1.1]">
@@ -135,7 +135,7 @@ export default function Register() {
                                 <input
                                     type="text"
                                     required
-                                    className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#22C55E] transition-all font-semibold outline-none"
+                                    className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none"
                                     placeholder="Jane Doe"
                                     value={fullName}
                                     onChange={(e) => setFullName(e.target.value)}
@@ -146,7 +146,7 @@ export default function Register() {
                                 <input
                                     type="text"
                                     required
-                                    className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#22C55E] transition-all font-semibold outline-none"
+                                    className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none"
                                     placeholder="Harbour Univ."
                                     value={instituteName}
                                     onChange={(e) => setInstituteName(e.target.value)}
@@ -165,7 +165,7 @@ export default function Register() {
                             />
                             <label
                                 htmlFor="avatar-reg"
-                                className="w-full flex items-center bg-[#F8F9FB] border-2 border-dashed border-gray-200 rounded-2xl px-5 py-3.5 text-gray-500 hover:text-[#22C55E] hover:bg-white hover:border-[#22C55E]/50 transition-all cursor-pointer font-semibold"
+                                className="w-full flex items-center bg-[#f5f7f9] border-2 border-dashed border-gray-200 rounded-2xl px-5 py-3.5 text-gray-500 hover:text-[#0b87bd] hover:bg-white hover:border-[#0b87bd]/50 transition-all cursor-pointer font-semibold"
                             >
                                 <svg className="w-5 h-5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -179,7 +179,7 @@ export default function Register() {
                             <input
                                 type="email"
                                 required
-                                className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#22C55E] transition-all font-semibold outline-none"
+                                className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none"
                                 placeholder="name@college.edu"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -191,7 +191,7 @@ export default function Register() {
                             <input
                                 type={showPassword ? "text" : "password"}
                                 required
-                                className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#22C55E] transition-all font-semibold outline-none"
+                                className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none"
                                 placeholder="••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -199,7 +199,7 @@ export default function Register() {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute bottom-3.5 right-5 text-gray-400 hover:text-[#22C55E]"
+                                className="absolute bottom-3.5 right-5 text-gray-400 hover:text-[#0b87bd]"
                             >
                                 {showPassword ? (
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" /></svg>
@@ -212,7 +212,7 @@ export default function Register() {
                         <div className="space-y-1">
                             <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-1">Account Protocol (Role)</label>
                             <select
-                                className="w-full bg-[#F8F9FB] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#22C55E] transition-all font-bold outline-none cursor-pointer appearance-none"
+                                className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-bold outline-none cursor-pointer appearance-none"
                                 value={role}
                                 onChange={(e) => setRole(e.target.value)}
                             >
@@ -231,7 +231,7 @@ export default function Register() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-[#22C55E] hover:bg-[#16A34A] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[#22C55E]/20 active:scale-[0.98] disabled:opacity-70 text-lg"
+                            className="w-full bg-[#0b87bd] hover:bg-[#096a96] text-white font-black py-4 rounded-2xl transition-all shadow-xl shadow-[#0b87bd]/20 active:scale-[0.98] disabled:opacity-70 text-lg"
                         >
                             {loading ? "PROCESSING..." : "Synchronize Profile"}
                         </button>
@@ -241,7 +241,7 @@ export default function Register() {
                         <button
                             type="button"
                             onClick={() => handleSocialLogin('google')}
-                            className="w-full flex justify-center items-center h-16 border-2 border-gray-50 rounded-2xl hover:border-[#22C55E]/30 hover:bg-[#F8F9FB] transition-all group gap-3"
+                            className="w-full flex justify-center items-center h-16 border-2 border-gray-50 rounded-2xl hover:border-[#0b87bd]/30 hover:bg-[#f5f7f9] transition-all group gap-3"
                         >
                             <svg className="w-5 h-5" viewBox="0 0 24 24">
                                 <path fill="#4285F4" d="M23.745 12.27c0-.79-.069-1.55-.198-2.28H12v4.31h6.586c-.284 1.49-1.127 2.75-2.395 3.6l3.882 3.01c2.27-2.09 3.57-5.17 3.57-8.64z" />
@@ -254,7 +254,7 @@ export default function Register() {
                     </div>
 
                     <p className="mt-8 text-center text-gray-500 font-bold text-sm">
-                        Existing User? <Link href="/auth/login" className="text-[#22C55E] hover:underline underline-offset-4 font-black">Login Authenticate</Link>
+                        Existing User? <Link href="/auth/login" className="text-[#0b87bd] hover:underline underline-offset-4 font-black">Login Authenticate</Link>
                     </p>
                 </div>
             </div>

@@ -25,13 +25,13 @@ export default async function VerifyClubs() {
                     {pendingClubs?.length > 0 ? pendingClubs.map(club => (
                         <div key={club.id} className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-8 hover:shadow-xl transition-all group">
                             <div className="flex items-center gap-6">
-                                <div className="w-16 h-16 bg-[#F8F7F3] rounded-2xl flex items-center justify-center text-gray-400 group-hover:text-[#22C55E] transition-colors">
+                                <div className="w-16 h-16 bg-[#f5f7f9] rounded-2xl flex items-center justify-center text-gray-400 group-hover:text-[#0b87bd] transition-colors">
                                     <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-black mb-1 group-hover:text-[#22C55E] transition-colors">{club.name}</h3>
+                                    <h3 className="text-xl font-black mb-1 group-hover:text-[#0b87bd] transition-colors">{club.name}</h3>
                                     <p className="text-gray-500 text-sm font-medium line-clamp-1">{club.description}</p>
                                     <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-2">Requested on {new Date(club.created_at).toLocaleDateString()}</p>
                                 </div>

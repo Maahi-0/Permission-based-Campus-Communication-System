@@ -131,7 +131,7 @@ export default function ClubDetail() {
     if (loading) {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen">
-                <div className="w-12 h-12 border-4 border-[#22C55E]/20 border-t-[#22C55E] rounded-full animate-spin mb-4"></div>
+                <div className="w-12 h-12 border-4 border-[#0b87bd]/20 border-t-[#0b87bd] rounded-full animate-spin mb-4"></div>
                 <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading Club...</p>
             </div>
         )
@@ -141,7 +141,7 @@ export default function ClubDetail() {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen">
                 <h2 className="text-2xl font-black text-gray-900 mb-2">Club Not Found</h2>
-                <Link href="/dashboard/clubs/all" className="text-[#22C55E] font-bold hover:underline">
+                <Link href="/dashboard/clubs/all" className="text-[#0b87bd] font-bold hover:underline">
                     ← Back to All Clubs
                 </Link>
             </div>
@@ -154,7 +154,7 @@ export default function ClubDetail() {
     return (
         <div className="pb-12">
             {/* Cover Image Section */}
-            <div className="relative h-80 bg-gradient-to-br from-[#22C55E]/10 to-[#16A34A]/5 overflow-hidden">
+            <div className="relative h-80 bg-gradient-to-br from-[#0b87bd]/10 to-[#096a96]/5 overflow-hidden">
                 {club.cover_image ? (
                     <img
                         src={club.cover_image}
@@ -163,7 +163,7 @@ export default function ClubDetail() {
                     />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                        <svg className="w-32 h-32 text-[#22C55E]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-32 h-32 text-[#0b87bd]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                     </div>
@@ -221,8 +221,8 @@ export default function ClubDetail() {
                                         className="w-full h-full object-cover"
                                     />
                                 ) : (
-                                    <div className="w-full h-full bg-gradient-to-br from-[#22C55E]/10 to-[#16A34A]/5 flex items-center justify-center">
-                                        <span className="text-4xl font-black text-[#22C55E]">
+                                    <div className="w-full h-full bg-gradient-to-br from-[#0b87bd]/10 to-[#096a96]/5 flex items-center justify-center">
+                                        <span className="text-4xl font-black text-[#0b87bd]">
                                             {club.name[0]?.toUpperCase()}
                                         </span>
                                     </div>
@@ -231,7 +231,7 @@ export default function ClubDetail() {
 
                             {/* Upload Logo Button (Leads Only) */}
                             {isLead && (
-                                <label className="absolute bottom-0 right-0 w-10 h-10 bg-[#22C55E] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#16A34A] transition-all shadow-lg border-4 border-white">
+                                <label className="absolute bottom-0 right-0 w-10 h-10 bg-[#0b87bd] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#096a96] transition-all shadow-lg border-4 border-white">
                                     <input
                                         type="file"
                                         className="hidden"
@@ -257,7 +257,7 @@ export default function ClubDetail() {
                                 <div>
                                     <h1 className="text-4xl font-black text-[#1E1E2D] mb-2">{club.name}</h1>
                                     <span className={`inline-block px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest ${club.is_approved
-                                            ? 'bg-[#22C55E]/10 text-[#22C55E] border border-[#22C55E]/20'
+                                            ? 'bg-[#0b87bd]/10 text-[#0b87bd] border border-[#0b87bd]/20'
                                             : 'bg-orange-500/10 text-orange-500 border border-orange-500/20'
                                         }`}>
                                         {club.is_approved ? '✓ Verified Club' : 'Pending Verification'}
@@ -267,7 +267,7 @@ export default function ClubDetail() {
                                 {isLead && (
                                     <Link
                                         href={`/dashboard/lead/members?club=${clubId}`}
-                                        className="px-6 py-3 bg-[#22C55E] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#16A34A] transition-all shadow-lg shadow-[#22C55E]/20"
+                                        className="px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#096a96] transition-all shadow-lg shadow-[#0b87bd]/20"
                                     >
                                         Manage Club
                                     </Link>
@@ -315,15 +315,15 @@ export default function ClubDetail() {
                         {/* Club Leads */}
                         <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100">
                             <h2 className="text-xl font-black text-[#1E1E2D] mb-6 flex items-center gap-2">
-                                <svg className="w-6 h-6 text-[#22C55E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-6 h-6 text-[#0b87bd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                                 </svg>
                                 Club Leadership
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {leads.map((member) => (
-                                    <div key={member.user_id} className="flex items-center gap-4 p-4 bg-[#F8F9FB] rounded-2xl hover:bg-gray-50 transition-all">
-                                        <div className="w-14 h-14 rounded-xl bg-[#22C55E]/10 overflow-hidden flex-shrink-0">
+                                    <div key={member.user_id} className="flex items-center gap-4 p-4 bg-[#f5f7f9] rounded-2xl hover:bg-gray-50 transition-all">
+                                        <div className="w-14 h-14 rounded-xl bg-[#0b87bd]/10 overflow-hidden flex-shrink-0">
                                             {member.profiles?.avatar_url ? (
                                                 <img
                                                     src={member.profiles.avatar_url}
@@ -331,7 +331,7 @@ export default function ClubDetail() {
                                                     className="w-full h-full object-cover"
                                                 />
                                             ) : (
-                                                <div className="w-full h-full flex items-center justify-center text-[#22C55E] text-xl font-black">
+                                                <div className="w-full h-full flex items-center justify-center text-[#0b87bd] text-xl font-black">
                                                     {member.profiles?.full_name?.[0]?.toUpperCase() || 'L'}
                                                 </div>
                                             )}
@@ -339,7 +339,7 @@ export default function ClubDetail() {
                                         <div className="flex-1 min-w-0">
                                             <p className="font-black text-gray-900 truncate">{member.profiles?.full_name || 'Unknown'}</p>
                                             <p className="text-xs text-gray-500 font-medium truncate">{member.profiles?.email}</p>
-                                            <span className="inline-block mt-1 px-2 py-0.5 bg-[#22C55E]/10 text-[#22C55E] rounded text-[9px] font-black uppercase tracking-widest">
+                                            <span className="inline-block mt-1 px-2 py-0.5 bg-[#0b87bd]/10 text-[#0b87bd] rounded text-[9px] font-black uppercase tracking-widest">
                                                 Lead
                                             </span>
                                         </div>
@@ -354,7 +354,7 @@ export default function ClubDetail() {
                                 <h2 className="text-xl font-black text-[#1E1E2D] mb-6">Members ({regularMembers.length})</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {regularMembers.map((member) => (
-                                        <div key={member.user_id} className="flex items-center gap-4 p-4 bg-[#F8F9FB] rounded-2xl hover:bg-gray-50 transition-all">
+                                        <div key={member.user_id} className="flex items-center gap-4 p-4 bg-[#f5f7f9] rounded-2xl hover:bg-gray-50 transition-all">
                                             <div className="w-12 h-12 rounded-xl bg-gray-100 overflow-hidden flex-shrink-0">
                                                 {member.profiles?.avatar_url ? (
                                                     <img
@@ -393,7 +393,7 @@ export default function ClubDetail() {
                             ) : (
                                 <div className="space-y-4">
                                     {events.slice(0, 5).map((event) => (
-                                        <div key={event.id} className="p-4 bg-[#F8F9FB] rounded-2xl hover:bg-gray-50 transition-all">
+                                        <div key={event.id} className="p-4 bg-[#f5f7f9] rounded-2xl hover:bg-gray-50 transition-all">
                                             <h3 className="font-black text-gray-900 mb-2 line-clamp-1">{event.title}</h3>
                                             <div className="space-y-1">
                                                 <div className="flex items-center gap-2 text-xs text-gray-500">
