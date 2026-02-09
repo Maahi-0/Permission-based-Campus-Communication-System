@@ -23,6 +23,8 @@ create table public.clubs (
   id uuid default gen_random_uuid() primary key,
   name text not null,
   description text,
+  cover_image text,
+  logo_url text,
   is_approved boolean default false,
   created_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
