@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase/client'
+import { createSupabaseClient } from '@/lib/supabase/client'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -13,6 +13,7 @@ export default function ManageMembers() {
     const [isLead, setIsLead] = useState(false)
     const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
+    const supabase = createSupabaseClient()
 
     useEffect(() => {
         fetchData()

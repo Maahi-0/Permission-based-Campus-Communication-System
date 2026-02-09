@@ -1,21 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: #8b5cf6;
-  --color-primary-hover: #7c3aed;
+  --color-primary: #22c55e;
+  --color-primary-hover: #16a34a;
   --color-secondary: #ec4899;
   --color-accent: #10b981;
-  --color-surface: #0a0a0a;
-  --color-surface-hover: #171717;
-  --color-border: #1f1f1f;
+  --color-surface: #F8F9FB;
+  --color-surface-hover: #F1F3F7;
+  --color-border: #E5E7EB;
 }
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --primary: 139 92 246;
+  --background: #ffffff;
+  --foreground: #1E1E2D;
+  --primary: 34 197 94;
   --secondary: 236 72 153;
   --accent: 16 185 129;
 }
@@ -23,9 +25,27 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Public Sans', 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* Dashboard Specific Styles */
+.dashboard-body {
+  font-family: 'Public Sans', sans-serif !important;
+}
+
+.gradient-text-dashboard {
+  background: linear-gradient(135deg, #1E1E2D 0%, #22C55E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card-dashboard {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Glassmorphism utility */
@@ -83,7 +103,7 @@ body {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .gradient-text {
@@ -95,4 +115,17 @@ body {
 
 .card-shadow {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2B2B3D;
+  border-radius: 10px;
 }

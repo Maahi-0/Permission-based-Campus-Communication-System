@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase/client'
+import { createSupabaseClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -11,6 +11,7 @@ export default function ClubMembersViewer() {
     const [members, setMembers] = useState([])
     const [loading, setLoading] = useState(true)
     const [membersLoading, setMembersLoading] = useState(false)
+    const supabase = createSupabaseClient()
 
     useEffect(() => {
         fetchClubs()
@@ -84,8 +85,8 @@ export default function ClubMembersViewer() {
                                     key={club.id}
                                     onClick={() => handleClubSelect(club)}
                                     className={`w-full text-left p-4 rounded-2xl transition-all border ${selectedClub?.id === club.id
-                                            ? 'bg-primary/10 border-primary/50 text-white shadow-lg shadow-primary/10'
-                                            : 'bg-white/[0.02] border-white/5 text-gray-400 hover:bg-white/5 hover:border-white/10'
+                                        ? 'bg-primary/10 border-primary/50 text-white shadow-lg shadow-primary/10'
+                                        : 'bg-white/[0.02] border-white/5 text-gray-400 hover:bg-white/5 hover:border-white/10'
                                         }`}
                                 >
                                     <div className="font-black text-sm">{club.name}</div>

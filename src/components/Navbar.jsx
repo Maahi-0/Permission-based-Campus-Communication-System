@@ -1,6 +1,6 @@
 'use client'
 
-import { supabase } from '@/lib/supabase/client'
+import { createSupabaseClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -9,6 +9,7 @@ export default function Navbar() {
     const [user, setUser] = useState(null)
     const [profile, setProfile] = useState(null)
     const router = useRouter()
+    const supabase = createSupabaseClient()
 
     useEffect(() => {
         const fetchUser = async () => {

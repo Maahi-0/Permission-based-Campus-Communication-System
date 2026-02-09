@@ -1,5 +1,4 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "Campus Connect | Centralized Club & Event Platform",
@@ -10,7 +9,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body className="antialiased min-h-screen flex flex-col">
-        <Navbar />
         <main className="flex-grow">
           {children}
         </main>

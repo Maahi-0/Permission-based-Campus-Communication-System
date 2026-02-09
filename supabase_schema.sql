@@ -132,3 +132,22 @@ $$ language plpgsql security definer;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
+
+-- 5. Storage setup for avatars
+-- Run these individually if your environment doesn't support multiline storage commands
+insert into storage.buckets (id, name, public) values ('profiles', 'profiles', true);
+
+create policy "Avatar images are publicly accessible" on storage.objects
+  for select using (bucket_id = 'profiles');
+
+create policy "Users can upload their own avatar" on storage.objects
+  for insert with check (
+    bucket_id = 'profiles' and 
+    auth.uid()::text = (storage.foldername(name))[1]
+  );
+
+create policy "Users can update their own avatar" on storage.objects
+  for update using (
+    bucket_id = 'profiles' and 
+    auth.uid()::text = (storage.foldername(name))[1]
+  );
