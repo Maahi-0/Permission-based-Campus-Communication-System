@@ -2,9 +2,10 @@ import { createSupabaseServer } from '@/lib/supabase/server'
 import Header from '@/components/dashboard/Header'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 
 export default async function ClubReview({ params }) {
-    const { id } = params
+    const { id } = await params
     const supabase = await createSupabaseServer()
     const { data: { user } } = await supabase.auth.getUser()
 
@@ -83,7 +84,34 @@ export default async function ClubReview({ params }) {
                             <form action={async () => {
                                 'use server'
                                 const s = await createSupabaseServer()
-                                await s.from('clubs').update({ is_approved: true }).eq('id', id)
+
+                                // Get the lead's user_id first
+                                const { data: members } = await s
+                                    .from('club_members')
+                                    .select('user_id')
+                                    .eq('club_id', id)
+                                    .eq('role', 'lead')
+                                    .single()
+
+                                const { error: updateError } = await s.from('clubs').update({ is_approved: true }).eq('id', id)
+                                if (updateError) {
+                                    throw new Error(`Approval failed: ${updateError.message}`)
+                                }
+
+                                // Create notification for the lead
+                                if (members?.user_id) {
+                                    await s.from('notifications').insert({
+                                        user_id: members.user_id,
+                                        title: 'Club Verified',
+                                        message: `Great news! "${club.name}" has been officially verified by the administration. You can now manage events.`,
+                                        type: 'success',
+                                        link: `/dashboard/lead`
+                                    })
+                                }
+
+                                revalidatePath('/dashboard/admin')
+                                revalidatePath('/dashboard/admin/verify-clubs')
+                                revalidatePath('/dashboard/clubs/all')
                                 redirect('/dashboard/admin/verify-clubs')
                             }} className="flex-grow">
                                 <button className="w-full py-4 bg-[#0b87bd] hover:bg-[#096a96] text-white rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all shadow-xl shadow-[#0b87bd]/20">
@@ -94,7 +122,13 @@ export default async function ClubReview({ params }) {
                                 'use server'
                                 const s = await createSupabaseServer()
                                 // In a real app we might delete or mark as declined
-                                await s.from('clubs').delete().eq('id', id)
+                                const { error: deleteError } = await s.from('clubs').delete().eq('id', id)
+                                if (deleteError) {
+                                    throw new Error(`Rejection failed: ${deleteError.message}`)
+                                }
+                                revalidatePath('/dashboard/admin')
+                                revalidatePath('/dashboard/admin/verify-clubs')
+                                revalidatePath('/dashboard/clubs/all')
                                 redirect('/dashboard/admin/verify-clubs')
                             }}>
                                 <button className="px-10 py-4 bg-red-50 text-red-500 hover:bg-red-100 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all">

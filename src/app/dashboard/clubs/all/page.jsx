@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation'
 import Header from '@/components/dashboard/Header'
 import Link from 'next/link'
 
+export const dynamic = 'force-dynamic'
+
 export default function AllClubs() {
     const [clubs, setClubs] = useState([])
     const [loading, setLoading] = useState(true)
@@ -76,8 +78,8 @@ export default function AllClubs() {
                             key={status}
                             onClick={() => setFilter(status)}
                             className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${filter === status
-                                    ? 'bg-[#0b87bd] text-white shadow-lg shadow-[#0b87bd]/20'
-                                    : 'bg-white text-gray-500 hover:bg-gray-50 border border-gray-100'
+                                ? 'bg-[#0b87bd] text-white shadow-lg shadow-[#0b87bd]/20'
+                                : 'bg-white text-gray-500 hover:bg-gray-50 border border-gray-100'
                                 }`}
                         >
                             {status}
@@ -131,8 +133,8 @@ export default function AllClubs() {
                                     {/* Status Badge */}
                                     <div className="absolute top-4 right-4">
                                         <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border backdrop-blur-sm ${club.is_approved
-                                                ? 'bg-[#0b87bd]/90 text-white border-white/20'
-                                                : 'bg-orange-500/90 text-white border-white/20'
+                                            ? 'bg-[#0b87bd]/90 text-white border-white/20'
+                                            : 'bg-orange-500/90 text-white border-white/20'
                                             }`}>
                                             {club.is_approved ? 'Verified' : 'Pending'}
                                         </span>

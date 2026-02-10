@@ -20,36 +20,39 @@ export default async function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#e9edf0] text-[#1E1E2D] selection:bg-[#0b87bd]/30">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 overflow-hidden">
-        {/* Visual Background Details */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0b87bd]/5 blur-[120px] rounded-full -mr-48 -mt-48 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0b87bd]/5 blur-[100px] rounded-full -ml-40 -mb-40 pointer-events-none"></div>
+      <section className="relative w-full h-[600px] md:h-[750px] overflow-hidden shadow-2xl group">
+        <img
+          src="/images/campus-connect-hero.png"
+          alt="Campus Connect Hero"
+          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b87bd] via-[#0b87bd]/60 to-transparent flex flex-col justify-center p-12 md:p-32">
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-[11px] font-black uppercase tracking-[0.2em] text-white bg-white/10 border border-white/20 rounded-full w-fit backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              Campus Ecosystem Active
+            </div>
 
-        <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 text-[11px] font-black uppercase tracking-[0.2em] text-[#0b87bd] bg-[#0b87bd]/10 border border-[#0b87bd]/20 rounded-full animate-fade-in shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0b87bd] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0b87bd]"></span>
-            </span>
-            Campus Ecosystem Active
-          </div>
+            <h1 className="text-6xl md:text-8xl font-black text-white mb-6 tracking-tighter leading-[0.95] drop-shadow-xl">
+              Stay Connected. <br />
+              Broadcast Your Voice.
+            </h1>
 
-          <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.95] animate-fade-in">
-            Stay Connected. <br />
-            <span className="gradient-text-dashboard">Broadcast Your Voice.</span>
-          </h1>
+            <p className="max-w-xl text-xl text-white/90 font-medium mb-12 leading-relaxed drop-shadow-md">
+              The unified platform for university organizations to orchestrate events, manage talent, and maintain verified campus communications.
+            </p>
 
-          <p className="max-w-2xl mx-auto text-lg text-gray-500 font-medium mb-12 animate-fade-in leading-relaxed">
-            The unified platform for university organizations to orchestrate events, manage talent, and maintain verified campus communications.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in">
-            <Link href="/auth/register" className="w-full sm:w-auto bg-[#0b87bd] hover:bg-[#096a96] text-white font-black px-10 py-5 rounded-2xl transition-all shadow-xl shadow-[#0b87bd]/20 hover:scale-[1.02] active:scale-[0.98]">
-              Join the Movement &rarr;
-            </Link>
-            <Link href="#events" className="w-full sm:w-auto glass-card-dashboard hover:bg-white text-[#1E1E2D] font-bold px-10 py-5 rounded-2xl transition-all border border-gray-200">
-              Explore Events
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <Link href="/auth/register" className="w-full sm:w-auto bg-white text-[#0b87bd] hover:bg-gray-100 font-black px-12 py-5 rounded-2xl transition-all shadow-xl hover:scale-[1.02] active:scale-[0.98] text-center">
+                Join the Movement
+              </Link>
+              <Link href="/auth/login" className="w-full sm:w-auto bg-transparent border-2 border-white/30 hover:border-white text-white font-bold px-12 py-5 rounded-2xl transition-all backdrop-blur-md text-center">
+                Sign In
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -60,6 +60,7 @@ export default function CreateEvent() {
                 .insert({
                     ...formData,
                     club_id: clubId,
+                    is_admin_approved: false
                 })
                 .select()
 

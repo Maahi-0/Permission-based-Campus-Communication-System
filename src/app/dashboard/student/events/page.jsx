@@ -10,6 +10,7 @@ export default async function StudentEvents() {
         .from('events')
         .select('*, clubs(name)')
         .eq('status', 'published')
+        .eq('is_admin_approved', true)
         .order('event_date', { ascending: true })
 
     return (

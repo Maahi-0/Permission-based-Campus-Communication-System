@@ -1,4 +1,10 @@
+import { JetBrains_Mono } from 'next/font/google'
 import "./globals.css";
+
+const jetbrains = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata = {
   title: "Campus Connect | Centralized Club & Event Platform",
@@ -7,8 +13,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark">
-      <body className="antialiased min-h-screen flex flex-col">
+    <html lang="en">
+      <body className={`${jetbrains.className} antialiased min-h-screen flex flex-col`}>
         <main className="flex-grow">
           {children}
         </main>

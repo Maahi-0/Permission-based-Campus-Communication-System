@@ -73,7 +73,7 @@ export default async function LeadDashboard() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     <div className="lg:col-span-2 space-y-8">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-xl font-black tracking-tight text-[#1E1E2D]">My Managed Clubs</h2>
+                            <h2 className="text-xl font-black tracking-tight text-[#0b87bd] uppercase tracking-widest">My Managed Clubs</h2>
                             <Link href="/dashboard/lead/create-club" className="px-6 py-2.5 bg-[#0b87bd] text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-[#0b87bd]/20 hover:bg-[#096a96] transition-all">Register New Club</Link>
                         </div>
 
@@ -102,7 +102,7 @@ export default async function LeadDashboard() {
                     </div>
 
                     <div className="space-y-8">
-                        <h2 className="text-xl font-black tracking-tight text-[#1E1E2D]">Quick Actions</h2>
+                        <h2 className="text-xl font-black tracking-tight text-[#0b87bd] uppercase tracking-widest">Quick Actions</h2>
                         <div className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-gray-100">
                             <div className="p-4 space-y-1">
                                 {[

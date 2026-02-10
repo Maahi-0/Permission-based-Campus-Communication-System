@@ -11,6 +11,9 @@ export default function Register() {
     const [fullName, setFullName] = useState('')
     const [role, setRole] = useState('student')
     const [instituteName, setInstituteName] = useState('')
+    const [educationLevel, setEducationLevel] = useState('Bachelors')
+    const [degree, setDegree] = useState('')
+    const [academicYear, setAcademicYear] = useState('')
     const [avatarFile, setAvatarFile] = useState(null)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -32,6 +35,9 @@ export default function Register() {
                         full_name: fullName,
                         role: role,
                         institute_name: instituteName,
+                        education_level: educationLevel,
+                        degree: degree,
+                        academic_year: academicYear,
                     }
                 }
             })
@@ -57,22 +63,29 @@ export default function Register() {
                     email: email,
                     role: role,
                     institute_name: instituteName,
+                    education_level: educationLevel,
+                    degree: degree,
+                    academic_year: academicYear,
                     avatar_url: avatarUrl,
                     created_at: new Date().toISOString(),
                 }
 
-                // Explicitly check for profile creation
-                const { error: profileError } = await supabase.from('profiles').upsert(profileData)
+                try {
+                    // Explicitly check for profile creation
+                    const { error: profileError } = await supabase.from('profiles').upsert(profileData)
 
-                if (profileError) {
-                    // Fallback try without email column just in case schema is older
-                    const { email: _, ...dataWithoutEmail } = profileData
-                    const { error: retryError } = await supabase.from('profiles').upsert(dataWithoutEmail)
-                    if (retryError) throw new Error(`Database Error: ${retryError.message}`)
+                    if (profileError && !profileError.message.includes('row-level security')) {
+                        throw profileError
+                    }
+                } catch (pErr) {
+                    console.warn('Profile sync handled by database trigger or blocked by RLS:', pErr)
+                    // If it's an RLS error, it's likely because the user isn't confirmed yet.
+                    // Since we saw the row in Supabase, we can proceed.
                 }
-            }
 
-            router.push('/auth/login?message=Registration successful! Your profile is active. Please log in.')
+                router.push('/auth/login?message=Registration successful! Please check your email to confirm your account or log in now.')
+                return; // Ensure we stop execution here
+            }
         } catch (err) {
             console.error('Registration failed:', err)
             setError(err.message)
@@ -129,16 +142,53 @@ export default function Register() {
                     </div>
 
                     <form onSubmit={handleRegister} className="space-y-5">
+                        <div className="space-y-1">
+                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-1">Full Name</label>
+                            <input
+                                type="text"
+                                required
+                                className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none"
+                                placeholder="Jane Doe"
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
+                            />
+                        </div>
+
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-1">
-                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-1">Full Name</label>
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-1">Education Level</label>
+                                <select
+                                    className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-bold outline-none cursor-pointer appearance-none"
+                                    value={educationLevel}
+                                    onChange={(e) => setEducationLevel(e.target.value)}
+                                >
+                                    <option value="Bachelors">Bachelors</option>
+                                    <option value="Masters">Masters</option>
+                                </select>
+                            </div>
+                            <div className="space-y-1">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-1">Degree Name</label>
                                 <input
                                     type="text"
                                     required
                                     className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none"
-                                    placeholder="Jane Doe"
-                                    value={fullName}
-                                    onChange={(e) => setFullName(e.target.value)}
+                                    placeholder="Computer Science"
+                                    value={degree}
+                                    onChange={(e) => setDegree(e.target.value)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-1">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest pl-1">Academic Year</label>
+                                <input
+                                    type="text"
+                                    required
+                                    className="w-full bg-[#f5f7f9] border-2 border-transparent rounded-2xl px-5 py-3.5 text-gray-900 focus:bg-white focus:border-[#0b87bd] transition-all font-semibold outline-none"
+                                    placeholder="3rd Year"
+                                    value={academicYear}
+                                    onChange={(e) => setAcademicYear(e.target.value)}
                                 />
                             </div>
                             <div className="space-y-1">

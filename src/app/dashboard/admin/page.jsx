@@ -1,6 +1,7 @@
 import { createSupabaseServer } from '@/lib/supabase/server'
 import Header from '@/components/dashboard/Header'
 import Link from 'next/link'
+export const dynamic = 'force-dynamic'
 
 export default async function AdminDashboard() {
     const supabase = await createSupabaseServer()
@@ -57,7 +58,7 @@ export default async function AdminDashboard() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                     <div className="lg:col-span-2 space-y-8">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-xl font-black tracking-tight text-[#1E1E2D]">Pending Verifications</h2>
+                            <h2 className="text-xl font-black tracking-tight text-[#0b87bd] uppercase tracking-widest">Pending Verifications</h2>
                             <Link href="/dashboard/admin/verify-clubs" className="text-xs font-black text-[#0b87bd] uppercase tracking-widest hover:underline decoration-2 underline-offset-4">Process Queue</Link>
                         </div>
 
@@ -99,7 +100,7 @@ export default async function AdminDashboard() {
                     </div>
 
                     <div className="space-y-8">
-                        <h2 className="text-xl font-black tracking-tight text-[#1E1E2D]">Infrastructure</h2>
+                        <h2 className="text-xl font-black tracking-tight text-[#0b87bd] uppercase tracking-widest">Infrastructure</h2>
                         <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100">
                             <div className="space-y-6">
                                 {[
