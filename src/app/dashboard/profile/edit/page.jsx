@@ -14,6 +14,8 @@ export default function EditProfilePage() {
     const [academicYear, setAcademicYear] = useState('')
     const [avatarFile, setAvatarFile] = useState(null)
     const [previewUrl, setPreviewUrl] = useState('')
+    const [coverFile, setCoverFile] = useState(null)
+    const [coverPreviewUrl, setCoverPreviewUrl] = useState('')
     const [loading, setLoading] = useState(false)
     const [fetching, setFetching] = useState(true)
     const [error, setError] = useState(null)
@@ -49,6 +51,7 @@ export default function EditProfilePage() {
             setDegree(data.degree || '')
             setAcademicYear(data.academic_year || '')
             setPreviewUrl(data.avatar_url || '')
+            setCoverPreviewUrl(data.cover_image || '')
         } catch (err) {
             console.error('Error fetching profile:', err)
             setError('Could not load profile data.')
@@ -65,6 +68,14 @@ export default function EditProfilePage() {
         }
     }
 
+    const handleCoverChange = (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            setCoverFile(file)
+            setCoverPreviewUrl(URL.createObjectURL(file))
+        }
+    }
+
     const handleUpdate = async (e) => {
         e.preventDefault()
         setLoading(true)
@@ -74,6 +85,7 @@ export default function EditProfilePage() {
         try {
             const { data: { user } } = await supabase.auth.getUser()
             let avatarUrl = profile.avatar_url
+            let coverUrl = profile.cover_image
 
             if (avatarFile) {
                 const fileExt = avatarFile.name.split('.').pop()
@@ -93,6 +105,24 @@ export default function EditProfilePage() {
                 avatarUrl = publicUrl
             }
 
+            if (coverFile) {
+                const fileExt = coverFile.name.split('.').pop()
+                const fileName = `cover-${Math.random()}.${fileExt}`
+                const filePath = `${user.id}/${fileName}`
+
+                const { error: uploadError } = await supabase.storage
+                    .from('profiles')
+                    .upload(filePath, coverFile)
+
+                if (uploadError) throw uploadError
+
+                const { data: { publicUrl } } = supabase.storage
+                    .from('profiles')
+                    .getPublicUrl(filePath)
+
+                coverUrl = publicUrl
+            }
+
             const { error: updateError } = await supabase
                 .from('profiles')
                 .update({
@@ -101,7 +131,8 @@ export default function EditProfilePage() {
                     education_level: educationLevel,
                     degree: degree,
                     academic_year: academicYear,
-                    avatar_url: avatarUrl
+                    avatar_url: avatarUrl,
+                    cover_image: coverUrl
                 })
                 .eq('id', user.id)
 
@@ -131,20 +162,40 @@ export default function EditProfilePage() {
             />
 
             <div className="max-w-2xl mx-auto mt-10">
-                <form onSubmit={handleUpdate} className="space-y-8 bg-zinc-900 border border-zinc-800 rounded-[2.5rem] p-10">
+                <form onSubmit={handleUpdate} className="space-y-8 bg-zinc-900 border border-zinc-800 rounded-[2.5rem] p-10 overflow-hidden">
+                    {/* Cover Upload */}
+                    <div className="space-y-4">
+                        <label className="text-[10px] font-black text-zinc-600 uppercase tracking-widest ml-1">Profile Cover Graphic</label>
+                        <div className="relative h-40 w-full rounded-3xl overflow-hidden bg-zinc-800 border-2 border-zinc-700 transition-all group-hover:border-white">
+                            {coverPreviewUrl ? (
+                                <img src={coverPreviewUrl} alt="Cover Preview" className="w-full h-full object-cover" />
+                            ) : (
+                                <div className="w-full h-full bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-black relative">
+                                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                                </div>
+                            )}
+                            <label htmlFor="cover-upload" className="absolute bottom-4 right-4 w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center cursor-pointer hover:bg-zinc-200 transition-all shadow-xl">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                <input type="file" id="cover-upload" className="hidden" accept="image/*" onChange={handleCoverChange} />
+                            </label>
+                        </div>
+                    </div>
+
                     {/* Avatar Upload */}
                     <div className="flex flex-col items-center">
-                        <div className="relative group">
-                            <div className="w-32 h-32 rounded-3xl overflow-hidden bg-zinc-800 border-2 border-zinc-700 transition-all group-hover:border-white ring-offset-4 ring-offset-black transition-all">
-                                {previewUrl ? (
-                                    <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-4xl font-black text-zinc-600">
-                                        {fullName?.[0]?.toUpperCase() || '?'}
-                                    </div>
-                                )}
+                        <div className="relative group -mt-20">
+                            <div className="w-32 h-32 rounded-3xl overflow-hidden bg-zinc-900 p-1 border-2 border-zinc-800 shadow-2xl relative group">
+                                <div className="w-full h-full rounded-2xl overflow-hidden bg-zinc-800 flex items-center justify-center">
+                                    {previewUrl ? (
+                                        <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center text-4xl font-black text-zinc-600">
+                                            {fullName?.[0]?.toUpperCase() || '?'}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                            <label htmlFor="avatar-upload" className="absolute -bottom-2 -right-2 w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center cursor-pointer hover:bg-zinc-200 transition-all shadow-xl">
+                            <label htmlFor="avatar-upload" className="absolute -bottom-2 -right-2 w-10 h-10 bg-white text-black rounded-xl flex items-center justify-center cursor-pointer hover:bg-zinc-200 transition-all shadow-xl z-20">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                                 <input type="file" id="avatar-upload" className="hidden" accept="image/*" onChange={handleFileChange} />
                             </label>

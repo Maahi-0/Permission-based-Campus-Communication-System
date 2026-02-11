@@ -25,8 +25,14 @@ export default async function ProfilePage() {
             <div className="max-w-4xl mx-auto mt-10">
                 <div className="bg-zinc-900 border border-zinc-800 rounded-[2.5rem] overflow-hidden">
                     {/* Cover / Header Section */}
-                    <div className="h-48 bg-gradient-to-r from-purple-900/40 via-blue-900/40 to-black relative">
-                        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                    <div className="h-48 relative overflow-hidden">
+                        {profile.cover_image ? (
+                            <img src={profile.cover_image} alt="Cover" className="w-full h-full object-cover" />
+                        ) : (
+                            <div className="w-full h-full bg-gradient-to-r from-purple-900/40 via-blue-900/40 to-black relative">
+                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                            </div>
+                        )}
                         <div className="absolute -bottom-16 left-12 flex items-end gap-6">
                             <div className="w-32 h-32 rounded-3xl bg-zinc-900 p-1 border-2 border-zinc-800 shadow-2xl relative group">
                                 <div className="w-full h-full rounded-2xl overflow-hidden bg-zinc-800 flex items-center justify-center">
