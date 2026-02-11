@@ -36,51 +36,39 @@ export default function Header({ title, subtitle, user }) {
         const timer = setTimeout(search, 300)
         return () => clearTimeout(timer)
     }, [searchQuery])
+
     return (
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 px-10 py-6 bg-transparent">
-            {/* Left Spacer for desktop to keep center alignment true centering if possible, 
-                but simple centering for now */}
-            <div className="hidden md:block w-72"></div>
-
-            <div className="flex-grow text-center max-w-xl mx-auto">
-                <div className="flex items-center justify-center gap-2 text-gray-400 text-[10px] font-black uppercase tracking-widest mb-3">
-                    <span className="opacity-50">Pages</span>
+        <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 px-4 md:px-0 py-10 bg-transparent">
+            <div className="flex-grow text-center md:text-left max-w-xl">
+                <div className="flex items-center justify-center md:justify-start gap-2 text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+                    <span className="opacity-50">Terminal</span>
                     <span className="opacity-30">/</span>
-                    <span className="text-[#0b87bd] border-b-2 border-[#0b87bd]/20 pb-0.5">{title}</span>
+                    <span className="text-white border-b-2 border-white/20 pb-0.5">{title}</span>
                 </div>
 
-                <div className="relative inline-block mb-3">
-                    <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-[#0b87bd] via-[#0ea5e9] to-[#0284c7] drop-shadow-sm pb-2">
-                        {title}
-                    </h1>
-                    {/* Decorative Elements */}
-                    <div className="absolute -top-6 -right-8 text-[#0b87bd]/10 transform rotate-12">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                        </svg>
-                    </div>
-                </div>
+                <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-4">
+                    {title}
+                </h1>
 
-                <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.25em] relative inline-block">
-                    <span className="relative z-10 px-4 bg-[#f3f4f6]">{subtitle}</span>
-                    <span className="absolute top-1/2 left-0 w-full h-[1px] bg-gray-200 -z-0"></span>
+                <p className="text-zinc-500 font-bold text-[10px] uppercase tracking-[0.4em]">
+                    {subtitle}
                 </p>
             </div>
 
-            <div className="flex items-center justify-center md:justify-end gap-4 w-72 relative">
-                <div className="relative group">
+            <div className="flex items-center justify-center md:justify-end gap-4 w-full md:w-auto relative">
+                <div className="relative group flex-grow md:flex-grow-0">
                     <input
                         type="text"
-                        placeholder="Search clubs & events..."
+                        placeholder="SEARCH COMMS..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="bg-white border-2 border-transparent focus:border-[#0b87bd]/20 focus:bg-white rounded-2xl pl-12 pr-6 py-3 text-sm font-semibold text-gray-900 outline-none transition-all w-64 shadow-sm"
+                        className="bg-zinc-900 border border-zinc-800 focus:border-white focus:bg-zinc-900 rounded-2xl pl-12 pr-6 py-3.5 text-xs font-black text-white outline-none transition-all w-full md:w-72 shadow-2xl tracking-widest uppercase"
                     />
                     <div className="absolute left-4 top-1/2 -translate-y-1/2">
                         {isSearching ? (
-                            <div className="w-4 h-4 border-2 border-[#0b87bd] border-t-transparent rounded-full animate-spin"></div>
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                         ) : (
-                            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         )}
@@ -88,29 +76,27 @@ export default function Header({ title, subtitle, user }) {
 
                     {/* Search Results Dropdown */}
                     {searchQuery.trim().length >= 2 && (
-                        <div className="absolute top-full mt-2 left-0 right-0 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-[100] p-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                        <div className="absolute top-full mt-4 left-0 right-0 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,1)] overflow-hidden z-[100] p-3 animate-in fade-in slide-in-from-top-2 duration-200">
                             {results.clubs.length === 0 && results.events.length === 0 && !isSearching ? (
-                                <div className="p-4 text-center text-xs font-bold text-gray-400 uppercase tracking-widest">No results found</div>
+                                <div className="p-4 text-center text-xs font-bold text-zinc-500 uppercase tracking-widest">No matching frequencies</div>
                             ) : (
                                 <>
                                     {results.clubs.length > 0 && (
-                                        <div className="mb-2">
-                                            <div className="px-3 py-1 text-[10px] font-black text-[#0b87bd] uppercase tracking-widest opacity-50">Clubs</div>
+                                        <div className="mb-4">
+                                            <div className="px-3 py-1 text-[10px] font-black text-zinc-500 uppercase tracking-widest opacity-50 mb-1">Clubs</div>
                                             {results.clubs.map(club => (
-                                                <Link key={club.id} href={`/dashboard/clubs/${club.id}`} className="flex items-center px-3 py-2 hover:bg-gray-50 rounded-xl transition-colors group">
-                                                    <div className="w-2 h-2 rounded-full bg-[#0b87bd] mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                                    <span className="text-sm font-bold text-gray-700">{club.name}</span>
+                                                <Link key={club.id} href={`/dashboard/clubs/${club.id}`} className="flex items-center px-4 py-3 hover:bg-zinc-800 rounded-xl transition-colors group">
+                                                    <span className="text-sm font-bold text-white tracking-tight">{club.name}</span>
                                                 </Link>
                                             ))}
                                         </div>
                                     )}
                                     {results.events.length > 0 && (
                                         <div>
-                                            <div className="px-3 py-1 text-[10px] font-black text-[#0b87bd] uppercase tracking-widest opacity-50">Events</div>
+                                            <div className="px-3 py-1 text-[10px] font-black text-zinc-500 uppercase tracking-widest opacity-50 mb-1">Events</div>
                                             {results.events.map(event => (
-                                                <Link key={event.id} href={`/dashboard/events/${event.id}`} className="flex items-center px-3 py-2 hover:bg-gray-50 rounded-xl transition-colors group">
-                                                    <div className="w-2 h-2 rounded-full bg-[#0b87bd] mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                                    <span className="text-sm font-bold text-gray-700">{event.title}</span>
+                                                <Link key={event.id} href={`/dashboard/events/${event.id}`} className="flex items-center px-4 py-3 hover:bg-zinc-800 rounded-xl transition-colors group">
+                                                    <span className="text-sm font-bold text-white tracking-tight">{event.title}</span>
                                                 </Link>
                                             ))}
                                         </div>

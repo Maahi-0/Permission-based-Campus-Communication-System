@@ -208,9 +208,9 @@ export default function ClubDetail() {
             </div>
 
             {/* Club Info Section */}
-            <div className="px-10 -mt-16 relative z-10">
+            <div className="px-4 md:px-10 -mt-16 relative z-10">
                 <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl border border-gray-100">
-                    <div className="flex items-start gap-6 mb-8">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8 text-center md:text-left">
                         {/* Logo */}
                         <div className="relative">
                             <div className="w-32 h-32 rounded-3xl bg-white border-4 border-white shadow-xl overflow-hidden">
@@ -252,13 +252,13 @@ export default function ClubDetail() {
                         </div>
 
                         {/* Club Details */}
-                        <div className="flex-1">
-                            <div className="flex items-start justify-between mb-4">
-                                <div>
-                                    <h1 className="text-4xl font-black text-[#1E1E2D] mb-2">{club.name}</h1>
+                        <div className="flex-1 w-full">
+                            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between mb-4 gap-4">
+                                <div className="flex flex-col items-center sm:items-start">
+                                    <h1 className="text-3xl md:text-4xl font-black text-[#1E1E2D] mb-2">{club.name}</h1>
                                     <span className={`inline-block px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest ${club.is_approved
-                                            ? 'bg-[#0b87bd]/10 text-[#0b87bd] border border-[#0b87bd]/20'
-                                            : 'bg-orange-500/10 text-orange-500 border border-orange-500/20'
+                                        ? 'bg-[#0b87bd]/10 text-[#0b87bd] border border-[#0b87bd]/20'
+                                        : 'bg-orange-500/10 text-orange-500 border border-orange-500/20'
                                         }`}>
                                         {club.is_approved ? '✓ Verified Club' : 'Pending Verification'}
                                     </span>
@@ -267,7 +267,7 @@ export default function ClubDetail() {
                                 {isLead && (
                                     <Link
                                         href={`/dashboard/lead/members?club=${clubId}`}
-                                        className="px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#096a96] transition-all shadow-lg shadow-[#0b87bd]/20"
+                                        className="w-full sm:w-auto px-6 py-3 bg-[#0b87bd] text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-[#096a96] transition-all shadow-lg shadow-[#0b87bd]/20 text-center"
                                     >
                                         Manage Club
                                     </Link>
@@ -279,7 +279,7 @@ export default function ClubDetail() {
                             </p>
 
                             {/* Stats */}
-                            <div className="flex items-center gap-8">
+                            <div className="flex items-center justify-center md:justify-start gap-8">
                                 <div className="flex items-center gap-2">
                                     <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center">
                                         <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

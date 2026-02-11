@@ -27,108 +27,136 @@ export default async function AdminDashboard() {
     ]
 
     return (
-        <div className="pb-12">
+        <div className="pb-12 text-white">
             <Header
                 title="System Control"
-                subtitle="Oversee all campus activities, verify organizations, and manage users."
+                subtitle="INFRASTRUCTURE MONITORING"
                 user={user}
             />
 
-            <div className="px-10 space-y-10">
+            <div className="space-y-12">
                 {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {stats.map((stat) => (
-                        <div key={stat.name} className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100 relative group overflow-hidden">
-                            <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${stat.color} opacity-[0.03] -mr-16 -mt-16 rounded-full group-hover:scale-110 transition-transform`}></div>
-                            <div className="flex items-start justify-between mb-6">
-                                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center text-white shadow-lg`}>
-                                    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={stat.icon} />
-                                    </svg>
+                        <div key={stat.name} className="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl relative overflow-hidden group">
+                            <div className="relative z-10">
+                                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] mb-2">{stat.name}</p>
+                                <div className="flex items-baseline gap-2">
+                                    <h2 className="text-4xl font-black tracking-tighter text-white">{stat.value}</h2>
+                                    <div className={`w-2 h-2 rounded-full bg-blue-500 animate-pulse`}></div>
                                 </div>
-                                <span className="text-[10px] font-black text-gray-400 bg-gray-50 px-3 py-1 rounded-full uppercase tracking-widest border border-gray-100">System</span>
                             </div>
-                            <p className="text-gray-500 text-xs font-black uppercase tracking-widest mb-1">{stat.name}</p>
-                            <h2 className="text-4xl font-black tracking-tighter text-[#1E1E2D]">{stat.value}</h2>
+                            <svg className={`absolute -right-4 -bottom-4 w-24 h-24 text-zinc-500 opacity-5 group-hover:opacity-10 transition-opacity`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d={stat.icon} />
+                            </svg>
                         </div>
                     ))}
                 </div>
 
                 {/* Verification Queue */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     <div className="lg:col-span-2 space-y-8">
-                        <div className="flex items-center justify-between">
-                            <h2 className="text-xl font-black tracking-tight text-[#0b87bd] uppercase tracking-widest">Pending Verifications</h2>
-                            <Link href="/dashboard/admin/verify-clubs" className="text-xs font-black text-[#0b87bd] uppercase tracking-widest hover:underline decoration-2 underline-offset-4">Process Queue</Link>
+                        <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+                            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-zinc-500">Verification Queue</h2>
+                            <Link href="/dashboard/admin/verify-clubs" className="text-[10px] font-black text-white uppercase tracking-widest hover:text-purple-400 transition-colors">Process All Nodes &rarr;</Link>
                         </div>
 
-                        <div className="bg-white rounded-[2rem] border border-gray-100 overflow-hidden shadow-sm">
-                            <table className="w-full text-left">
-                                <thead className="bg-gray-50 border-b border-gray-100">
-                                    <tr>
-                                        <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Club Name</th>
-                                        <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest">Submitted</th>
-                                        <th className="px-8 py-5 text-[10px] font-black text-gray-500 uppercase tracking-widest text-right">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {pendingClubs?.length > 0 ? pendingClubs.map(club => (
-                                        <tr key={club.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
-                                            <td className="px-8 py-6">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 rounded-xl bg-[#f5f7f9] flex items-center justify-center text-[#1E1E2D] font-black text-xs">
-                                                        {club.name[0]}
-                                                    </div>
-                                                    <span className="font-bold text-[#1E1E2D]">{club.name}</span>
-                                                </div>
-                                            </td>
-                                            <td className="px-8 py-6">
-                                                <span className="text-xs font-bold text-gray-500">{new Date(club.created_at).toLocaleDateString()}</span>
-                                            </td>
-                                            <td className="px-8 py-6 text-right">
-                                                <Link href={`/dashboard/admin/clubs/${club.id}`} className="px-6 py-2 bg-[#1E1E2D] text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all">Review</Link>
-                                            </td>
-                                        </tr>
-                                    )) : (
+                        <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden">
+                            {/* Desktop Table View */}
+                            <div className="hidden md:block">
+                                <table className="w-full text-left">
+                                    <thead className="bg-zinc-900/50 border-b border-zinc-800">
                                         <tr>
-                                            <td colSpan="3" className="px-8 py-12 text-center text-gray-400 font-bold text-sm uppercase tracking-widest">Queue is clear</td>
+                                            <th className="px-8 py-5 text-[10px] font-black text-zinc-500 uppercase tracking-widest">Node Identity</th>
+                                            <th className="px-8 py-5 text-[10px] font-black text-zinc-500 uppercase tracking-widest">Broadcast Time</th>
+                                            <th className="px-8 py-5 text-[10px] font-black text-zinc-500 uppercase tracking-widest text-right">Protocol</th>
                                         </tr>
-                                    )}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody className="divide-y divide-zinc-800/50">
+                                        {pendingClubs?.length > 0 ? pendingClubs.map(club => (
+                                            <tr key={club.id} className="hover:bg-zinc-800/30 transition-colors">
+                                                <td className="px-8 py-6">
+                                                    <div className="flex items-center gap-4">
+                                                        <div className="w-10 h-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white font-black text-xs">
+                                                            {club.name[0]}
+                                                        </div>
+                                                        <span className="font-bold text-white tracking-tight">{club.name}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="px-8 py-6">
+                                                    <span className="text-xs font-bold text-zinc-500">{new Date(club.created_at).toLocaleDateString()}</span>
+                                                </td>
+                                                <td className="px-8 py-6 text-right">
+                                                    <Link href={`/dashboard/admin/clubs/${club.id}`} className="px-6 py-2 bg-zinc-800 border border-zinc-700 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">Review</Link>
+                                                </td>
+                                            </tr>
+                                        )) : (
+                                            <tr>
+                                                <td colSpan="3" className="px-8 py-12 text-center text-zinc-700 font-bold text-xs uppercase tracking-widest">Signal clear - No pending nodes</td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            {/* Mobile Card View */}
+                            <div className="md:hidden divide-y divide-zinc-800">
+                                {pendingClubs?.length > 0 ? pendingClubs.map(club => (
+                                    <div key={club.id} className="p-6">
+                                        <div className="flex items-center gap-4 mb-6">
+                                            <div className="w-10 h-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white font-black text-xs">
+                                                {club.name[0]}
+                                            </div>
+                                            <div>
+                                                <p className="font-black text-white">{club.name}</p>
+                                                <p className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">REQ_{new Date(club.created_at).getTime()}</p>
+                                            </div>
+                                        </div>
+                                        <Link href={`/dashboard/admin/clubs/${club.id}`} className="block w-full text-center px-6 py-3 bg-zinc-800 border border-zinc-700 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                                            Review Interface
+                                        </Link>
+                                    </div>
+                                )) : (
+                                    <div className="p-12 text-center text-zinc-700 font-bold text-xs uppercase tracking-widest">No pending frequencies</div>
+                                )}
+                            </div>
                         </div>
                     </div>
 
                     <div className="space-y-8">
-                        <h2 className="text-xl font-black tracking-tight text-[#0b87bd] uppercase tracking-widest">Infrastructure</h2>
-                        <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-gray-100">
+                        <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+                            <h2 className="text-xs font-black uppercase tracking-[0.4em] text-zinc-500">Core Registry</h2>
+                        </div>
+                        <div className="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl">
                             <div className="space-y-6">
                                 {[
-                                    { name: 'All Clubs', count: totalClubs, color: 'text-blue-500', path: '/dashboard/admin/all-clubs' },
-                                    { name: 'Verified', count: totalClubs - pendingClubsCount, color: 'text-green-500', path: '/dashboard/admin/verified-clubs' },
-                                    { name: 'Declined', count: 0, color: 'text-red-500', path: '/dashboard/admin/declined-clubs' },
+                                    { name: 'Total Nodes', count: totalClubs, color: 'bg-blue-500', path: '/dashboard/admin/all-clubs' },
+                                    { name: 'Synced Nodes', count: totalClubs - pendingClubsCount, color: 'bg-emerald-500', path: '/dashboard/admin/verified-clubs' },
+                                    { name: 'Offline Nodes', count: 0, color: 'bg-red-500', path: '/dashboard/admin/declined-clubs' },
                                 ].map((item, i) => (
-                                    <Link href={item.path} key={i} className="flex items-center justify-between group cursor-pointer border-b border-gray-50 pb-4 last:border-0 last:pb-0">
+                                    <Link href={item.path} key={i} className="flex items-center justify-between group cursor-pointer border-b border-zinc-800/50 pb-4 last:border-0 last:pb-0">
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-2 h-2 rounded-full ${item.color.replace('text', 'bg')}`}></div>
-                                            <span className="font-black text-[#1E1E2D] text-sm group-hover:text-[#0b87bd] transition-colors">{item.name}</span>
+                                            <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
+                                            <span className="font-black text-zinc-400 text-xs group-hover:text-white transition-colors uppercase tracking-widest">{item.name}</span>
                                         </div>
-                                        <span className="text-sm font-black text-gray-300 group-hover:text-[#1E1E2D] transition-colors">{item.count}</span>
+                                        <span className="text-xs font-black text-zinc-700 group-hover:text-white transition-colors">{item.count}</span>
                                     </Link>
                                 ))}
                             </div>
-                            <Link href="/dashboard/admin/members" className="w-full mt-8 py-4 bg-[#f5f7f9] text-[#1E1E2D] rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-gray-200 block text-center transition-all">
-                                Manage Campus Registry
+                            <Link href="/dashboard/admin/members" className="w-full mt-10 py-4 bg-white text-black rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-200 block text-center transition-all font-mono">
+                                MANAGE SYSTEM USERS
                             </Link>
                         </div>
 
-                        <div className="bg-gradient-to-br from-indigo-900 to-black rounded-[2rem] p-8 text-white relative shadow-2xl overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 -mr-16 -mt-16 rounded-full blur-3xl group-hover:scale-110 transition-transform"></div>
-                            <h4 className="text-lg font-black tracking-tight mb-2">Audit Logs</h4>
-                            <p className="text-white/60 text-xs font-medium leading-relaxed mb-6">Review system-wide changes, authentication logs, and club transitions.</p>
-                            <button className="px-6 py-3 bg-white text-indigo-900 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-100 transition-all">
-                                View Reports
-                            </button>
+                        <div className="bg-gradient-to-br from-blue-900/40 to-black border border-blue-500/20 rounded-3xl p-8 relative overflow-hidden group">
+                            <div className="relative z-10">
+                                <h4 className="text-lg font-black mb-2 tracking-tighter uppercase font-mono">Kernel Audit</h4>
+                                <p className="text-zinc-500 text-xs font-medium leading-relaxed mb-6 italic">Review system-wide changes, authentication logs, and club transitions.</p>
+                                <button className="px-8 py-3 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+                                    Access Logs
+                                </button>
+                            </div>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl -mr-16 -mt-16 group-hover:bg-blue-500/20 transition-all"></div>
                         </div>
                     </div>
                 </div>

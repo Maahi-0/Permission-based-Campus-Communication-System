@@ -101,8 +101,8 @@ function CreateEventForm() {
                 subtitle="Broadcast a new activity to the campus community"
             />
 
-            <div className="px-10">
-                <div className="max-w-4xl bg-white rounded-[2.5rem] p-12 shadow-xl border border-gray-100">
+            <div className="px-4 md:px-10">
+                <div className="max-w-4xl bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 shadow-xl border border-gray-100">
                     {success ? (
                         <div className="text-center py-12">
                             <div className="w-20 h-20 bg-[#0b87bd]/10 rounded-full flex items-center justify-center mx-auto mb-6">

@@ -1,6 +1,6 @@
 import { createSupabaseServer } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import Sidebar from '@/components/dashboard/Sidebar'
+import DashboardClientLayout from '@/components/dashboard/DashboardClientLayout'
 
 export default async function DashboardLayout({ children }) {
     const supabase = await createSupabaseServer()
@@ -29,8 +29,6 @@ export default async function DashboardLayout({ children }) {
             email: user.email
         }
 
-        // Optional: Attempt to repair the DB record silently
-        // This might fail if the user doesn't have permissions, but we can still proceed with the virtual profile
         try {
             await supabase.from('profiles').upsert(profile)
         } catch (e) {
@@ -40,26 +38,27 @@ export default async function DashboardLayout({ children }) {
 
     if (!profile) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#e9edf0] p-6 text-center">
-                <div className="max-w-md w-full bg-white rounded-[2.5rem] p-12 border border-gray-100 shadow-xl">
-                    <div className="text-6xl mb-6">⚠️</div>
-                    <h1 className="text-2xl font-black text-[#1E1E2D] mb-4">Identity Out of Sync</h1>
-                    <p className="text-gray-500 font-medium mb-8 leading-relaxed">
-                        We found your account, but your campus profile hasn't been synchronized yet. This can happen if the registration was interrupted.
+            <div className="min-h-screen flex items-center justify-center bg-black p-6 text-center">
+                <div className="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-blue-500"></div>
+                    <div className="text-6xl mb-8 grayscale opacity-50">📡</div>
+                    <h1 className="text-3xl font-black text-white mb-4 tracking-tighter uppercase">IDENTITY_DESYNC</h1>
+                    <p className="text-zinc-500 font-medium mb-10 leading-relaxed text-sm">
+                        Node identified but profile data packet is missing. This can occur if the synchronization handshake was interrupted during initialization.
                     </p>
                     <div className="space-y-4">
                         <button
                             onClick={() => window.location.reload()}
-                            className="w-full bg-[#0b87bd] text-white font-black py-4 rounded-2xl hover:bg-[#096a96] transition-all"
+                            className="w-full bg-white text-black font-black py-4 rounded-2xl hover:bg-zinc-200 transition-all text-xs uppercase tracking-widest"
                         >
-                            Retry Sync
+                            Reconnect Node
                         </button>
                         <form action="/api/auth/sign-out" method="post">
                             <button
                                 type="submit"
-                                className="w-full bg-[#1E1E2D] text-white font-black py-4 rounded-2xl hover:bg-black transition-all"
+                                className="w-full bg-zinc-800 text-white font-black py-4 rounded-2xl hover:bg-zinc-700 transition-all text-xs uppercase tracking-widest border border-zinc-700"
                             >
-                                Sign Out & Restart
+                                Terminate Session
                             </button>
                         </form>
                     </div>
@@ -69,21 +68,8 @@ export default async function DashboardLayout({ children }) {
     }
 
     return (
-        <div className="flex min-h-screen bg-[#e9edf0] font-sans selection:bg-[#0b87bd]/30 selection:text-[#1E1E2D]">
-            {/* Left Sidebar Fixed */}
-            <Sidebar user={user} profile={profile} />
-
-            {/* Main Content Scrollable */}
-            <main className="flex-1 ml-72 min-h-screen relative">
-                {/* Visual Backdrop Details */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#0b87bd]/5 to-transparent blur-3xl rounded-full pointer-events-none -mr-48 -mt-48 z-0"></div>
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#0b87bd]/5 to-transparent blur-3xl rounded-full pointer-events-none -ml-48 -mb-48 z-0"></div>
-
-                <div className="relative z-10">
-                    {children}
-                </div>
-            </main>
-
-        </div>
+        <DashboardClientLayout user={user} profile={profile}>
+            {children}
+        </DashboardClientLayout>
     )
 }

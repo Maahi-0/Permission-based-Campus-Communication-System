@@ -64,22 +64,22 @@ export default function AllClubs() {
     }
 
     return (
-        <div className="pb-12 h-full">
+        <div className="pb-12 text-white">
             <Header
                 title="Campus Clubs"
-                subtitle="Explore all student organizations"
+                subtitle="EXPLORE ALL LOGICAL NODES"
             />
 
-            <div className="px-10">
+            <div className="">
                 {/* Filter Tabs */}
-                <div className="flex items-center gap-2 mb-8">
+                <div className="flex items-center gap-4 mb-10 overflow-x-auto pb-4 scrollbar-none">
                     {['all', 'verified', 'pending'].map((status) => (
                         <button
                             key={status}
                             onClick={() => setFilter(status)}
-                            className={`px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${filter === status
-                                ? 'bg-[#0b87bd] text-white shadow-lg shadow-[#0b87bd]/20'
-                                : 'bg-white text-gray-500 hover:bg-gray-50 border border-gray-100'
+                            className={`px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all whitespace-nowrap border ${filter === status
+                                ? 'bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.1)]'
+                                : 'bg-zinc-900 text-zinc-500 border-zinc-800 hover:text-white hover:border-zinc-600'
                                 }`}
                         >
                             {status}
@@ -88,53 +88,54 @@ export default function AllClubs() {
                 </div>
 
                 {loading ? (
-                    <div className="flex flex-col items-center py-20">
-                        <div className="w-10 h-10 border-4 border-[#0b87bd]/20 border-t-[#0b87bd] rounded-full animate-spin mb-4"></div>
-                        <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Loading Clubs...</p>
+                    <div className="flex flex-col items-center py-32">
+                        <div className="w-12 h-12 border-2 border-zinc-800 border-t-white rounded-full animate-spin mb-6"></div>
+                        <p className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em] animate-pulse">Syncing Registry...</p>
                     </div>
                 ) : clubs.length === 0 ? (
-                    <div className="bg-white rounded-[2.5rem] p-16 text-center border-2 border-dashed border-gray-200">
-                        <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    <div className="bg-zinc-900/50 rounded-[2.5rem] p-24 text-center border border-zinc-800 border-dashed">
+                        <div className="w-20 h-20 bg-zinc-800 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                            <svg className="w-10 h-10 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                         </div>
-                        <h3 className="text-lg font-black text-[#1E1E2D] mb-2">No Clubs Found</h3>
-                        <p className="text-gray-500 text-sm">
+                        <h3 className="text-xl font-black text-white mb-3 uppercase tracking-tighter">void_signal</h3>
+                        <p className="text-zinc-500 text-sm font-medium">
                             {filter === 'all'
-                                ? "No clubs have been registered yet."
-                                : `No ${filter} clubs found.`}
+                                ? "No clubs have been initialized in this sector."
+                                : `No ${filter} frequencies detected.`}
                         </p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {clubs.map((club) => (
                             <Link
                                 key={club.id}
                                 href={`/dashboard/clubs/${club.id}`}
-                                className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl transition-all group cursor-pointer"
+                                className="bg-zinc-900 border border-zinc-800 rounded-[2.5rem] overflow-hidden hover:border-zinc-700 hover:bg-zinc-900/80 transition-all group flex flex-col h-full"
                             >
                                 {/* Cover Image */}
-                                <div className="h-40 bg-gradient-to-br from-[#0b87bd]/10 to-[#096a96]/5 relative overflow-hidden">
+                                <div className="h-44 bg-zinc-800 relative overflow-hidden shrink-0">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent z-10 opacity-60"></div>
                                     {club.cover_image ? (
                                         <img
                                             src={club.cover_image}
                                             alt={club.name}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                         />
                                     ) : (
-                                        <div className="w-full h-full flex items-center justify-center">
-                                            <svg className="w-16 h-16 text-[#0b87bd]/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                        <div className="w-full h-full flex items-center justify-center bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800 via-zinc-900 to-zinc-900">
+                                            <svg className="w-16 h-16 text-zinc-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                             </svg>
                                         </div>
                                     )}
 
                                     {/* Status Badge */}
-                                    <div className="absolute top-4 right-4">
-                                        <span className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border backdrop-blur-sm ${club.is_approved
-                                            ? 'bg-[#0b87bd]/90 text-white border-white/20'
-                                            : 'bg-orange-500/90 text-white border-white/20'
+                                    <div className="absolute top-6 right-6 z-20">
+                                        <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border backdrop-blur-md ${club.is_approved
+                                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                                            : 'bg-amber-500/10 text-amber-400 border-amber-500/20'
                                             }`}>
                                             {club.is_approved ? 'Verified' : 'Pending'}
                                         </span>
@@ -142,8 +143,8 @@ export default function AllClubs() {
 
                                     {/* Logo */}
                                     {club.logo_url && (
-                                        <div className="absolute bottom-0 left-6 transform translate-y-1/2">
-                                            <div className="w-16 h-16 rounded-2xl bg-white border-4 border-white shadow-xl overflow-hidden">
+                                        <div className="absolute bottom-0 left-8 transform translate-y-1/2 z-20">
+                                            <div className="w-16 h-16 rounded-2xl bg-zinc-900 border-4 border-zinc-900 shadow-2xl overflow-hidden">
                                                 <img
                                                     src={club.logo_url}
                                                     alt={`${club.name} logo`}
@@ -155,23 +156,23 @@ export default function AllClubs() {
                                 </div>
 
                                 {/* Content */}
-                                <div className="p-6 pt-8">
-                                    <h3 className="text-xl font-black text-[#1E1E2D] mb-2 group-hover:text-[#0b87bd] transition-colors line-clamp-1">
+                                <div className="p-8 pt-10 flex flex-col flex-grow">
+                                    <h3 className="text-2xl font-black text-white mb-3 group-hover:text-purple-400 transition-colors line-clamp-1 tracking-tighter uppercase">
                                         {club.name}
                                     </h3>
 
-                                    <p className="text-sm text-gray-600 font-medium line-clamp-2 mb-6 leading-relaxed">
-                                        {club.description || 'No description available'}
+                                    <p className="text-sm text-zinc-500 font-medium line-clamp-2 mb-8 leading-relaxed italic">
+                                        {club.description || 'No data broadcast found.'}
                                     </p>
 
                                     {/* Stats */}
-                                    <div className="flex items-center justify-between pt-4 border-t border-gray-50">
-                                        <div className="flex items-center gap-2">
+                                    <div className="mt-auto pt-6 border-t border-zinc-800 flex items-center justify-between">
+                                        <div className="flex items-center gap-3">
                                             <div className="flex -space-x-2">
                                                 {club.leads.slice(0, 3).map((lead, idx) => (
                                                     <div
                                                         key={idx}
-                                                        className="w-8 h-8 rounded-full border-2 border-white bg-[#0b87bd]/10 overflow-hidden"
+                                                        className="w-8 h-8 rounded-lg border-2 border-zinc-900 bg-zinc-800 overflow-hidden shrink-0"
                                                     >
                                                         {lead?.avatar_url ? (
                                                             <img
@@ -180,23 +181,23 @@ export default function AllClubs() {
                                                                 className="w-full h-full object-cover"
                                                             />
                                                         ) : (
-                                                            <div className="w-full h-full flex items-center justify-center text-[#0b87bd] text-xs font-black">
+                                                            <div className="w-full h-full flex items-center justify-center text-zinc-500 text-[10px] font-black">
                                                                 {lead?.full_name?.[0]?.toUpperCase() || 'L'}
                                                             </div>
                                                         )}
                                                     </div>
                                                 ))}
                                             </div>
-                                            <span className="text-xs font-bold text-gray-500">
+                                            <span className="text-[10px] font-black text-zinc-600 uppercase tracking-widest">
                                                 {club.leads.length} {club.leads.length === 1 ? 'Lead' : 'Leads'}
                                             </span>
                                         </div>
 
-                                        <div className="flex items-center gap-1.5 text-gray-500">
-                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <div className="flex items-center gap-2 px-3 py-1 bg-zinc-800/50 rounded-lg text-zinc-400">
+                                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                             </svg>
-                                            <span className="text-xs font-bold">{club.memberCount}</span>
+                                            <span className="text-xs font-black">{club.memberCount}</span>
                                         </div>
                                     </div>
                                 </div>
